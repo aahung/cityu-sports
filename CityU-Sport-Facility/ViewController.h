@@ -10,6 +10,10 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *eidTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+- (IBAction)loginAction:(id)sender;
+- (IBAction)didEndEditing:(id)sender;
 
 @end
 

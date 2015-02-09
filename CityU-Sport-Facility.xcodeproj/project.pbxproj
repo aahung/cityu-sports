@@ -16,6 +16,18 @@
 		B26F32011A85BA790026234F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26F31FF1A85BA790026234F /* LaunchScreen.xib */; };
 		B26F320D1A85BA790026234F /* CityU_Sport_FacilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B26F320C1A85BA790026234F /* CityU_Sport_FacilityTests.m */; };
 		B2C774991A85BE220074FC92 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2C774981A85BE220074FC92 /* Settings.bundle */; };
+		B2C7749B1A85C01B0074FC92 /* FAQ.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B2C7749A1A85C01B0074FC92 /* FAQ.rtf */; };
+		B2C7749E1A85C12D0074FC92 /* FAQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C7749D1A85C12D0074FC92 /* FAQViewController.m */; };
+		B2C774A21A85CA9E0074FC92 /* SimpleAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C774A11A85CA9E0074FC92 /* SimpleAlertView.m */; };
+		B2C774A51A85CD620074FC92 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C774A41A85CD620074FC92 /* User.m */; };
+		B2C774A81A85D08E0074FC92 /* Connector.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C774A71A85D08E0074FC92 /* Connector.m */; };
+		B2C774AB1A85EFE50074FC92 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C774AA1A85EFE50074FC92 /* Parser.m */; };
+		B2C774AE1A85F8980074FC92 /* ManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C774AD1A85F8980074FC92 /* ManageViewController.m */; };
+		B2C774B11A85F8BF0074FC92 /* BookingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C774B01A85F8BF0074FC92 /* BookingTableViewCell.m */; };
+		B2C774B41A85FCD50074FC92 /* SelectDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C774B31A85FCD50074FC92 /* SelectDateViewController.m */; };
+		B2C774B71A85FE330074FC92 /* SelectFacilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C774B61A85FE330074FC92 /* SelectFacilityViewController.m */; };
+		B2C774BA1A85FEE00074FC92 /* SettingsTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C774B91A85FEE00074FC92 /* SettingsTableTableViewController.m */; };
+		B2C774BD1A86015A0074FC92 /* SelectCourtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C774BC1A86015A0074FC92 /* SelectCourtViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +58,29 @@
 		B26F320B1A85BA790026234F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B26F320C1A85BA790026234F /* CityU_Sport_FacilityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityU_Sport_FacilityTests.m; sourceTree = "<group>"; };
 		B2C774981A85BE220074FC92 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		B2C7749A1A85C01B0074FC92 /* FAQ.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = FAQ.rtf; sourceTree = "<group>"; };
+		B2C7749C1A85C12D0074FC92 /* FAQViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAQViewController.h; sourceTree = "<group>"; };
+		B2C7749D1A85C12D0074FC92 /* FAQViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAQViewController.m; sourceTree = "<group>"; };
+		B2C774A01A85CA9E0074FC92 /* SimpleAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleAlertView.h; path = Class/SimpleAlertView.h; sourceTree = "<group>"; };
+		B2C774A11A85CA9E0074FC92 /* SimpleAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleAlertView.m; path = Class/SimpleAlertView.m; sourceTree = "<group>"; };
+		B2C774A31A85CD620074FC92 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Class/User.h; sourceTree = "<group>"; };
+		B2C774A41A85CD620074FC92 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Class/User.m; sourceTree = "<group>"; };
+		B2C774A61A85D08E0074FC92 /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = Class/Connector.h; sourceTree = "<group>"; };
+		B2C774A71A85D08E0074FC92 /* Connector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Connector.m; path = Class/Connector.m; sourceTree = "<group>"; };
+		B2C774A91A85EFE50074FC92 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parser.h; path = Class/Parser.h; sourceTree = "<group>"; };
+		B2C774AA1A85EFE50074FC92 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parser.m; path = Class/Parser.m; sourceTree = "<group>"; };
+		B2C774AC1A85F8980074FC92 /* ManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageViewController.h; sourceTree = "<group>"; };
+		B2C774AD1A85F8980074FC92 /* ManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageViewController.m; sourceTree = "<group>"; };
+		B2C774AF1A85F8BF0074FC92 /* BookingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingTableViewCell.h; sourceTree = "<group>"; };
+		B2C774B01A85F8BF0074FC92 /* BookingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingTableViewCell.m; sourceTree = "<group>"; };
+		B2C774B21A85FCD50074FC92 /* SelectDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDateViewController.h; sourceTree = "<group>"; };
+		B2C774B31A85FCD50074FC92 /* SelectDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDateViewController.m; sourceTree = "<group>"; };
+		B2C774B51A85FE330074FC92 /* SelectFacilityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectFacilityViewController.h; sourceTree = "<group>"; };
+		B2C774B61A85FE330074FC92 /* SelectFacilityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectFacilityViewController.m; sourceTree = "<group>"; };
+		B2C774B81A85FEE00074FC92 /* SettingsTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableTableViewController.h; sourceTree = "<group>"; };
+		B2C774B91A85FEE00074FC92 /* SettingsTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableTableViewController.m; sourceTree = "<group>"; };
+		B2C774BB1A86015A0074FC92 /* SelectCourtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCourtViewController.h; sourceTree = "<group>"; };
+		B2C774BC1A86015A0074FC92 /* SelectCourtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCourtViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +134,7 @@
 		B26F31EF1A85BA790026234F /* CityU-Sport-Facility */ = {
 			isa = PBXGroup;
 			children = (
+				B2C7749F1A85CA6E0074FC92 /* Class */,
 				B26F31F41A85BA790026234F /* AppDelegate.h */,
 				B26F31F51A85BA790026234F /* AppDelegate.m */,
 				B26F31F71A85BA790026234F /* ViewController.h */,
@@ -107,6 +143,20 @@
 				B26F31FD1A85BA790026234F /* Images.xcassets */,
 				B26F31FF1A85BA790026234F /* LaunchScreen.xib */,
 				B26F31F01A85BA790026234F /* Supporting Files */,
+				B2C7749C1A85C12D0074FC92 /* FAQViewController.h */,
+				B2C7749D1A85C12D0074FC92 /* FAQViewController.m */,
+				B2C774AC1A85F8980074FC92 /* ManageViewController.h */,
+				B2C774AD1A85F8980074FC92 /* ManageViewController.m */,
+				B2C774B21A85FCD50074FC92 /* SelectDateViewController.h */,
+				B2C774B31A85FCD50074FC92 /* SelectDateViewController.m */,
+				B2C774B51A85FE330074FC92 /* SelectFacilityViewController.h */,
+				B2C774B61A85FE330074FC92 /* SelectFacilityViewController.m */,
+				B2C774BB1A86015A0074FC92 /* SelectCourtViewController.h */,
+				B2C774BC1A86015A0074FC92 /* SelectCourtViewController.m */,
+				B2C774B81A85FEE00074FC92 /* SettingsTableTableViewController.h */,
+				B2C774B91A85FEE00074FC92 /* SettingsTableTableViewController.m */,
+				B2C774AF1A85F8BF0074FC92 /* BookingTableViewCell.h */,
+				B2C774B01A85F8BF0074FC92 /* BookingTableViewCell.m */,
 			);
 			path = "CityU-Sport-Facility";
 			sourceTree = "<group>";
@@ -114,6 +164,7 @@
 		B26F31F01A85BA790026234F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B2C7749A1A85C01B0074FC92 /* FAQ.rtf */,
 				B2C774981A85BE220074FC92 /* Settings.bundle */,
 				B26F31F11A85BA790026234F /* Info.plist */,
 				B26F31F21A85BA790026234F /* main.m */,
@@ -136,6 +187,21 @@
 				B26F320B1A85BA790026234F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B2C7749F1A85CA6E0074FC92 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				B2C774A01A85CA9E0074FC92 /* SimpleAlertView.h */,
+				B2C774A11A85CA9E0074FC92 /* SimpleAlertView.m */,
+				B2C774A31A85CD620074FC92 /* User.h */,
+				B2C774A41A85CD620074FC92 /* User.m */,
+				B2C774A61A85D08E0074FC92 /* Connector.h */,
+				B2C774A71A85D08E0074FC92 /* Connector.m */,
+				B2C774A91A85EFE50074FC92 /* Parser.h */,
+				B2C774AA1A85EFE50074FC92 /* Parser.m */,
+			);
+			name = Class;
 			sourceTree = "<group>";
 		};
 		EFA16E73D8E0C1E08D0F6A91 /* Frameworks */ = {
@@ -229,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2C774991A85BE220074FC92 /* Settings.bundle in Resources */,
+				B2C7749B1A85C01B0074FC92 /* FAQ.rtf in Resources */,
 				B26F31FC1A85BA790026234F /* Main.storyboard in Resources */,
 				B26F32011A85BA790026234F /* LaunchScreen.xib in Resources */,
 				B26F31FE1A85BA790026234F /* Images.xcassets in Resources */,
@@ -282,9 +349,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2C774AB1A85EFE50074FC92 /* Parser.m in Sources */,
+				B2C774BD1A86015A0074FC92 /* SelectCourtViewController.m in Sources */,
+				B2C774B11A85F8BF0074FC92 /* BookingTableViewCell.m in Sources */,
+				B2C774A81A85D08E0074FC92 /* Connector.m in Sources */,
 				B26F31F91A85BA790026234F /* ViewController.m in Sources */,
+				B2C7749E1A85C12D0074FC92 /* FAQViewController.m in Sources */,
+				B2C774BA1A85FEE00074FC92 /* SettingsTableTableViewController.m in Sources */,
+				B2C774A51A85CD620074FC92 /* User.m in Sources */,
+				B2C774A21A85CA9E0074FC92 /* SimpleAlertView.m in Sources */,
+				B2C774AE1A85F8980074FC92 /* ManageViewController.m in Sources */,
 				B26F31F61A85BA790026234F /* AppDelegate.m in Sources */,
+				B2C774B71A85FE330074FC92 /* SelectFacilityViewController.m in Sources */,
 				B26F31F31A85BA790026234F /* main.m in Sources */,
+				B2C774B41A85FCD50074FC92 /* SelectDateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +487,7 @@
 			baseConfigurationReference = 146809BC05504DD327CE8B55 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "CityU-Sport-Facility/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -421,6 +500,7 @@
 			baseConfigurationReference = 80DA8383ED0BC9DC4336C261 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "CityU-Sport-Facility/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
