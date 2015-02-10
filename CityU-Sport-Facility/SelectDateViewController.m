@@ -12,6 +12,7 @@
 #import "Connector.h"
 #import "User.h"
 #import "SelectFacilityViewController.h"
+#import "Parser.h"
 
 
 @interface SelectDateViewController ()
@@ -76,6 +77,9 @@
         cell.textLabel.text = [dateFormatter stringFromDate:date];
         dateFormatter.dateFormat = @"EEEE";
         cell.detailTextLabel.text = [dateFormatter stringFromDate:date];
+        dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+        dateFormatter.dateFormat = @"e";
+        [cell.imageView setImage:[UIImage imageNamed:[Parser getWeekdayImageNameByIndex:[[dateFormatter stringFromDate:date] integerValue] - 1]]];
         cell.userInteractionEnabled = true;
     }
     

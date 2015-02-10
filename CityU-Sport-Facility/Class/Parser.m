@@ -402,4 +402,13 @@
     return string;
 }
 
++ (NSString *)getWeekdayImageNameByIndex:(NSInteger)index {
+    if (index > 6 || index < 0) {
+        return @"week_view";
+    }
+    return [@[@"week_su", @"week_mo", @"week_tu", @"week_we", @"week_th", @"week_fr", @"week_sa"] objectAtIndex:index];
+}
+
+
 @end
+

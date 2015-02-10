@@ -24,6 +24,8 @@
 
 + (NSArray *) getDatesByHTML: (NSString *) html;
 
++ (NSString *) getWeekdayImageNameByIndex: (NSInteger) index;
+
 + (NSArray *) getFacilitiesByHTML: (NSString *) html;
 + (NSString *) getFacilityNameByCode: (NSString *) code;
 + (NSString *) getFacilityImageNameByCode: (NSString *) code;

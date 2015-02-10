@@ -708,7 +708,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lzN-eq-txb" id="SdB-Tv-sPT">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="View on Github" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dmf-c4-JmC">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="View source code on Github" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dmf-c4-JmC">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
@@ -851,7 +851,7 @@
     </scenes>
     <resources>
         <image name="GitHub-Mark" width="32" height="32"/>
-        <image name="bg" width="414" height="736"/>
+        <image name="bg" width="621" height="1104"/>
         <image name="booking" width="32" height="32"/>
         <image name="bug" width="32" height="32"/>
         <image name="business" width="32" height="32"/>
