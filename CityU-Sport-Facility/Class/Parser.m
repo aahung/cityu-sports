@@ -147,7 +147,11 @@
         tokens = [tokens[0] componentsSeparatedByString:@"<FRAME SRC=\""];
         if ([tokens count] > 0) {
             NSString * link = tokens[[tokens count] - 1];
-            return [NSString stringWithFormat:@"http://brazil.cityu.edu.hk:8754%@", link];
+            NSString * URLString = [NSString stringWithFormat:@"http://brazil.cityu.edu.hk:8754%@", link];
+            if ([NSURL URLWithString:URLString] == nil) {
+                return nil;
+            }
+            return URLString;
         }
     }
     return nil;
@@ -200,7 +204,7 @@
         NSString * href = a.attributes[@"href"];
         if (href != nil) {
             NSArray * tokens = [href componentsSeparatedByString:@"sub_data('"];
-            if ([tokens count] < 1) {
+            if ([tokens count] < 2) {
                 continue;
             }
             NSString * facility = tokens[1];
