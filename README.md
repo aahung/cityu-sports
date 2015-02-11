@@ -4,13 +4,12 @@ unofficial cityu sport facility booking app
 ## Update log
 
 ### 1.0.1 (21): 
-
 Fixed the bug causing crash when refresh after 00:00
 
-### 1.0.1 (20): app store
+### 1.0.1 (20): 
 different icons for week days.
 
-### 1.0.1 (19):
+### 1.0.1 (19): app store
 UI Redesigned,
 Improved stability,
 Fixed some bugs,
