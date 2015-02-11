@@ -1,7 +1,9 @@
 # CityU Sport Facility
 unofficial cityu sport facility booking app
 
-## Update log
+### 1.0.1 (22):
+Add edit button in manage page,
+add more icons in setting page
 
 ### 1.0.1 (21): 
 Fixed the bug causing crash when refresh after 00:00
@@ -27,5 +29,3 @@ Deal with the unexpected url when requesting availability (court)
 
 ### 0.1.2 (13):
 Reset locale to en_US to avoid failure to add calendar events on system language other than English.
-
-

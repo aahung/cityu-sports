@@ -168,7 +168,6 @@
     return @[deleteAction, calendarAction];
 }
 
-
 - (void) deleteAction: (NSIndexPath *) indexPath {
     NSDictionary * book = self.books[indexPath.item];
     if ([book valueForKey:@"id"] == nil) {
@@ -222,14 +221,14 @@
     }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)editAction:(id)sender {
+    if ([self.tableView isEditing]) {
+        [self.tableView setEditing:false animated:true];
+        self.editButton.title = @"Edit";
+    } else {
+        [self.tableView setEditing:true animated:true];
+        self.editButton.title = @"Done";
+    }
 }
-*/
 
 @end
