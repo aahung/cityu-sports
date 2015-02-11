@@ -3,7 +3,11 @@ unofficial cityu sport facility booking app
 
 ## Update log
 
-### 1.0.1 (20):
+### 1.0.1 (21): 
+
+Fixed the bug causing crash when refresh after 00:00
+
+### 1.0.1 (20): app store
 different icons for week days.
 
 ### 1.0.1 (19):
@@ -15,11 +19,11 @@ iOS 7 is supported.
 ### 1.0.0:
 Internal version, skipped
 
-### 0.1.2 (15):
+### 0.1.2 (15): 
 Suddenly the delete function doesn't work, after I recompile the exact same code and it works. 
 In addition, I optimised some codes.
 
-### 0.1.2 (14):
+### 0.1.2 (14): app store
 Deal with the unexpected url when requesting availability (court)
 
 ### 0.1.2 (13):
