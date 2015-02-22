@@ -16,7 +16,7 @@
 @property AFURLSessionManager *manager;
 @property NSString * sessionId;
 
-- (void) requestSessionId: (void(^)(AFHTTPRequestOperation *operation, NSString * sessionId)) successHandler error: (void(^)(AFHTTPRequestOperation *operation, id responseObject)) errorHandler;
+- (void) requestSessionId: (void(^)(AFHTTPRequestOperation *operation, NSString * sessionId)) successHandler error: (void(^)(AFHTTPRequestOperation *operation, NSString * message)) errorHandler;
 
 - (void) login: (NSString *)eid password: (NSString * )password success: (void(^)(AFHTTPRequestOperation *operation, NSString * sid)) successHandler error: (void(^)(AFHTTPRequestOperation *operation, id responseObject)) errorHandler;
 

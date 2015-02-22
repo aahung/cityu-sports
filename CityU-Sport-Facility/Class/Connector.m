@@ -34,7 +34,7 @@
     return self;
 }
 
-- (void) requestSessionId: (void(^)(AFHTTPRequestOperation *operation, NSString * sessionId)) successHandler error: (void(^)(AFHTTPRequestOperation *operation, id responseObject)) errorHandler {
+- (void) requestSessionId: (void(^)(AFHTTPRequestOperation *operation, NSString * sessionId)) successHandler error: (void(^)(AFHTTPRequestOperation *operation, NSString * message)) errorHandler {
     
     NSDictionary * parameters = @{};
     
@@ -42,12 +42,18 @@
         NSString * html = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSString * sessionId = [Parser getSessionIdByHTML:html];
         if (sessionId == nil) {
-            errorHandler(nil, nil);
+            NSString * errorMessage = [Parser getMessageByHTML:html];
+            if ([errorMessage isEqual: @""]) {
+                errorMessage = @"Booking system is not open during 00:00 - 08:00 HKT or on public holiday";
+            }
+            errorHandler(nil, errorMessage);
         } else {
             self.sessionId = sessionId;
             successHandler(operation, sessionId);
         }
-    } error:errorHandler];
+    } error:^(AFHTTPRequestOperation *operation, id responseObject) {
+        errorHandler(operation, @"Booking system is not open during 00:00 - 08:00 HKT or on public holiday");
+    }];
 }
 
 - (void)login: (NSString *)eid password:(NSString *) password success :(void (^)(AFHTTPRequestOperation *, NSString *))successHandler error:(void (^)(AFHTTPRequestOperation *, id))errorHandler {

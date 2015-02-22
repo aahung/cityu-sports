@@ -1,6 +1,9 @@
 # CityU Sport Facility
 unofficial cityu sport facility booking app
 
+### 1.0.2 (23): app store
+display the error message when fail to get session
+
 ### 1.0.1 (22):
 Add edit button in manage page,
 add more icons in setting page

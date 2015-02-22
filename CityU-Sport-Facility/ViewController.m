@@ -73,7 +73,7 @@
                 [hud hide:true afterDelay:1.0];
                 [SimpleAlertView showAlertWithTitle:@"Log in failed" message:@"Fails to get your SID, maybe your EID or password is wrong."];
             }];
-        } error:^(AFHTTPRequestOperation *operation, id responseObject) {
+        } error:^(AFHTTPRequestOperation *operation, NSString * message) {
             hud.labelText = @"Error";
             [hud hide:true afterDelay:1.0];
             [SimpleAlertView showAlertWithTitle:@"Failed to get session" message:@"Booking system is not open during 00:00 - 08:00 HKT"];
