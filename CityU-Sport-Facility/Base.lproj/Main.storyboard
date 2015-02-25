@@ -137,7 +137,7 @@
                     <connections>
                         <outlet property="eidTextField" destination="hFv-VV-sHD" id="OXe-Cs-RCO"/>
                         <outlet property="passwordTextField" destination="dQ5-7P-fX1" id="xjT-zc-Ue8"/>
-                        <segue destination="PHE-ks-6x4" kind="showDetail" identifier="in" id="H0f-dv-wjV"/>
+                        <segue destination="PHE-ks-6x4" kind="presentation" identifier="in" id="H0f-dv-wjV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

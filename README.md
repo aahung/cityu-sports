@@ -1,7 +1,10 @@
 # CityU Sport Facility
 unofficial cityu sport facility booking app
 
-### 1.0.2 (23): app store
+### 1.0.3 (25):
+[iOS 7] Fixed the bug in wrong segue causes back button("< Welcome") appears in the navigation bar after log in. 
+
+### 1.0.2 (23, 24): app store
 display the error message when fail to get session
 
 ### 1.0.1 (22):
