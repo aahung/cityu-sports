@@ -76,7 +76,7 @@
         } error:^(AFHTTPRequestOperation *operation, NSString * message) {
             hud.labelText = @"Error";
             [hud hide:true afterDelay:1.0];
-            [SimpleAlertView showAlertWithTitle:@"Failed to get session" message:@"Booking system is not open during 00:00 - 08:00 HKT"];
+            [SimpleAlertView showAlertWithTitle:@"Failed to get session" message:message];
         }];
     });
 }
