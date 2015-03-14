@@ -14,5 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *facilityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *venueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *deadlineLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton *calendarButton;
+
 
 @end

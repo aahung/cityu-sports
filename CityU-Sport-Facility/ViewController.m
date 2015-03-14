@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "SimpleAlertView.h"
+#import "SimpleAlertViewController.h"
 #import "User.h"
 #import "Connector.h"
 #import <MBProgressHUD.h>
@@ -71,12 +71,12 @@
             } error:^(AFHTTPRequestOperation *operation, id responseObject) {
                 hud.labelText = @"Error";
                 [hud hide:true afterDelay:1.0];
-                [SimpleAlertView showAlertWithTitle:@"Log in failed" message:@"Fails to get your SID, maybe your EID or password is wrong."];
+                [SIMPLEALERT showAlertWithTitle:@"Log in failed" message:@"Fails to get your SID, maybe your EID or password is wrong."];
             }];
         } error:^(AFHTTPRequestOperation *operation, NSString * message) {
             hud.labelText = @"Error";
             [hud hide:true afterDelay:1.0];
-            [SimpleAlertView showAlertWithTitle:@"Failed to get session" message:message];
+            [SIMPLEALERT showAlertWithTitle:@"Failed to get session" message:message];
         }];
     });
 }
@@ -85,7 +85,7 @@
     if ([self validateTextField]) {
         [self tryLogin];
     } else {
-        [SimpleAlertView showAlertWithTitle:@"Error" message:@"Please input your EID and password"];
+        [SIMPLEALERT showAlertWithTitle:@"Error" message:@"Please input your EID and password"];
         return;
     }
 }

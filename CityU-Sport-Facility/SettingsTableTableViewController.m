@@ -9,7 +9,7 @@
 #import "SettingsTableTableViewController.h"
 #import "AppDelegate.h"
 #import "User.h"
-#import "SimpleAlertView.h"
+#import "SimpleAlertViewController.h"
 
 @interface SettingsTableTableViewController ()
 
@@ -41,7 +41,7 @@
     if (indexPath.section == 0 && indexPath.item == 1) {
         // log out
         [User clearUser];
-        [SimpleAlertView showAlertWithTitle:@"Goodbye" message:@"Your user info has been cleared." dismissHandler:^{
+        [SIMPLEALERT showAlertWithTitle:@"Goodbye" message:@"Your user info has been cleared." dismissHandler:^{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self dismissViewControllerAnimated:true completion:nil];
             });

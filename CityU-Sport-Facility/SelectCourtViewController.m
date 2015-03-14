@@ -8,7 +8,7 @@
 
 #import "SelectCourtViewController.h"
 #import <MBProgressHUD.h>
-#import "SimpleAlertView.h"
+#import "SimpleAlertViewController.h"
 #import "Connector.h"
 #import "User.h"
 #import "Parser.h"
@@ -90,15 +90,15 @@
     
     NSDictionary * court = self.courts[self.times[indexPath.section]][indexPath.item];
     if ([court valueForKey:@"message"] != nil) {
-        [SimpleAlertView showAlertWithTitle:@"Sorry" message:[court valueForKey:@"message"]];
+        [SIMPLEALERT showAlertWithTitle:@"Sorry" message:[court valueForKey:@"message"]];
         return;
     }
     if ([court valueForKey:@"date"] == nil || [court valueForKey:@"court"] == nil || [court valueForKey:@"venue"] == nil || [court valueForKey:@"stime"] == nil || [court valueForKey:@"facilityRef"] == nil) {
-        [SimpleAlertView showAlertWithTitle:@"Error" message:[court valueForKey:@"Missed some keys"]];
+        [SIMPLEALERT showAlertWithTitle:@"Error" message:[court valueForKey:@"Missed some keys"]];
         return;
     }
     
-    [SimpleAlertView showAlertWithTitle:@"Confirm" message:[NSString stringWithFormat:@"You are going to book %@ at %@", [court valueForKey:@"courtReadable"], [court valueForKey:@"timeReadable"]] defaultTitle:@"Confirm" defaultHandler:^(SIAlertView *alert) {
+    [SIMPLEALERT showAlertWithTitle:@"Confirm" message:[NSString stringWithFormat:@"You are going to book %@ at %@", [court valueForKey:@"courtReadable"], [court valueForKey:@"timeReadable"]] defaultTitle:@"Confirm" defaultHandler:^() {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -116,13 +116,13 @@
             [connector makeBooking:[User getEID] password:[User getPassword] bookParameters:self.bookParameters bookReferer:self.bookReferer success:^(NSString * message){
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hide:true];
-                    [SimpleAlertView showAlertWithTitle:@"Book result" message:message];
+                    [SIMPLEALERT showAlertWithTitle:@"Book result" message:message];
                 });
             } error:^(NSString * message) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     hud.labelText = @"Error";
                     [hud hide:true afterDelay:1.0];
-                    [SimpleAlertView showAlertWithTitle:@"Error" message:message];
+                    [SIMPLEALERT showAlertWithTitle:@"Error" message:message];
                 });
             } partHandler:^{
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -146,7 +146,7 @@
         self.times = [courts.allKeys sortedArrayUsingSelector:@selector(compare:)];
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([self.courts count] == 0) {
-                [SimpleAlertView showAlertWithTitle:@"Sorry" message:@"There is no remaining available" dismissHandler:^{
+                [SIMPLEALERT showAlertWithTitle:@"Sorry" message:@"There is no remaining available" dismissHandler:^{
                     [self performSegueWithIdentifier:@"unwind" sender:self];
                 }];
             }
@@ -159,7 +159,7 @@
             [self.refreshControl endRefreshing];
             hud.labelText = @"Error";
             [hud hide:true afterDelay:1.0];
-            [SimpleAlertView showAlertWithTitle:@"Error" message:message];
+            [SIMPLEALERT showAlertWithTitle:@"Error" message:message];
         });
     } partHandler:^{
         hud.labelText = @"Request court list (~5 secs)";

@@ -13,6 +13,7 @@
 		B21078861A8A705700A8347C /* getDateAfter2400.m in Sources */ = {isa = PBXBuildFile; fileRef = B21078851A8A705700A8347C /* getDateAfter2400.m */; };
 		B21078881A8A739500A8347C /* getAvailabilityAfter2400.m in Sources */ = {isa = PBXBuildFile; fileRef = B21078871A8A739500A8347C /* getAvailabilityAfter2400.m */; };
 		B210788A1A8A745800A8347C /* getMyBookingAfter2400.m in Sources */ = {isa = PBXBuildFile; fileRef = B21078891A8A745800A8347C /* getMyBookingAfter2400.m */; };
+		B25296E01AB46EE800652717 /* SimpleAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B25296DF1AB46EE800652717 /* SimpleAlertViewController.m */; };
 		B26F31F31A85BA790026234F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B26F31F21A85BA790026234F /* main.m */; };
 		B26F31F61A85BA790026234F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B26F31F51A85BA790026234F /* AppDelegate.m */; };
 		B26F31F91A85BA790026234F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B26F31F81A85BA790026234F /* ViewController.m */; };
@@ -53,6 +54,8 @@
 		B21078851A8A705700A8347C /* getDateAfter2400.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getDateAfter2400.m; sourceTree = "<group>"; };
 		B21078871A8A739500A8347C /* getAvailabilityAfter2400.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getAvailabilityAfter2400.m; sourceTree = "<group>"; };
 		B21078891A8A745800A8347C /* getMyBookingAfter2400.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getMyBookingAfter2400.m; sourceTree = "<group>"; };
+		B25296DE1AB46EE800652717 /* SimpleAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleAlertViewController.h; path = Class/SimpleAlertViewController.h; sourceTree = "<group>"; };
+		B25296DF1AB46EE800652717 /* SimpleAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleAlertViewController.m; path = Class/SimpleAlertViewController.m; sourceTree = "<group>"; };
 		B26F31ED1A85BA790026234F /* CityU-Sport-Facility.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CityU-Sport-Facility.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26F31F11A85BA790026234F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B26F31F21A85BA790026234F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 			children = (
 				B2C774A01A85CA9E0074FC92 /* SimpleAlertView.h */,
 				B2C774A11A85CA9E0074FC92 /* SimpleAlertView.m */,
+				B25296DE1AB46EE800652717 /* SimpleAlertViewController.h */,
+				B25296DF1AB46EE800652717 /* SimpleAlertViewController.m */,
 				B2C774A31A85CD620074FC92 /* User.h */,
 				B2C774A41A85CD620074FC92 /* User.m */,
 				B2C774A61A85D08E0074FC92 /* Connector.h */,
@@ -402,6 +407,7 @@
 				B26F31F91A85BA790026234F /* ViewController.m in Sources */,
 				B2C7749E1A85C12D0074FC92 /* FAQViewController.m in Sources */,
 				B2C774BA1A85FEE00074FC92 /* SettingsTableTableViewController.m in Sources */,
+				B25296E01AB46EE800652717 /* SimpleAlertViewController.m in Sources */,
 				B2C774A51A85CD620074FC92 /* User.m in Sources */,
 				B2C774A21A85CA9E0074FC92 /* SimpleAlertView.m in Sources */,
 				B2C774AE1A85F8980074FC92 /* ManageViewController.m in Sources */,

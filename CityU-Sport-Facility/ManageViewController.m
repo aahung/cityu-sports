@@ -11,9 +11,9 @@
 #import <MBProgressHUD.h>
 #import "Connector.h"
 #import "User.h"
-#import "SimpleAlertView.h"
+#import "SimpleAlertViewController.h"
 
-#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 @interface ManageViewController ()
 
@@ -89,17 +89,21 @@
     } else {
         cell.deadlineLabel.text = @"";
     }
+    cell.cancelButton.tag = indexPath.row;
+    [cell.cancelButton addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
+    cell.calendarButton.tag = indexPath.row;
+    [cell.calendarButton addTarget:self action:@selector(calendarAction:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 170.0;
+    return 195.0;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
         [self.tableView setEditing:false animated:true];
-        [self deleteAction:indexPath];
+        [self deleteBooking:indexPath.item sender:[tableView cellForRowAtIndexPath:indexPath]];
     }
 }
 
@@ -107,59 +111,13 @@
     UITableViewRowAction * deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Cancel" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         [self.tableView setEditing:false animated:true];
         
-        [self deleteAction:indexPath];
+        [self deleteBooking:indexPath.item sender:[tableView cellForRowAtIndexPath:indexPath]];
     }];
     
     UITableViewRowAction * calendarAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"+Calendar" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         [self.tableView setEditing:false animated:true];
         
-        EKEventStore * eventStore = [[EKEventStore alloc] init];
-        [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
-            if (granted && error == nil) {
-                EKEvent * event = [EKEvent eventWithEventStore:eventStore];
-                
-                
-                NSDictionary * book = self.books[indexPath.item];
-                
-                if ([book valueForKey:@"facility"] != nil) {
-                    event.title = [book valueForKey:@"facility"];
-                } else {
-                    event.title = @"Exercise";
-                }
-                
-                NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-                dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
-                dateFormatter.dateFormat = @"(EEE) dd MMMM   yyyy HH:mm";
-                NSArray * timeTokens = [[book valueForKey:@"time"] componentsSeparatedByString:@"-"];
-                NSString * startTime = [NSString stringWithFormat:@"%@ %@", [book valueForKey:@"date"], timeTokens[0]];
-                NSString * endTime = [NSString stringWithFormat:@"%@ %@", [book valueForKey:@"date"], timeTokens[1]];
-                
-                NSDate * startDate = [dateFormatter dateFromString:startTime];
-                NSDate * endDate = [dateFormatter dateFromString:endTime];
-                if (startTime != nil && endDate != nil) {
-                    event.startDate = startDate;
-                    event.endDate = endDate;
-                    event.location = [book valueForKey:@"venue"];
-                    event.notes = [book valueForKey:@"deadline"];
-                    event.calendar = eventStore.defaultCalendarForNewEvents;
-                    NSError * error = nil;
-                    [eventStore saveEvent:event span:EKSpanThisEvent commit:true error:&error];
-                    if (error == nil) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [SimpleAlertView showAlertWithTitle:@"Calendar event created" message:[NSString stringWithFormat:@"Date: %@\nTime: %@\nGo to Calendar app and check it out", [book valueForKey:@"date"], [book valueForKey:@"time"]]];
-                        });
-                        return;
-                    }
-                }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [SimpleAlertView showAlertWithTitle:@"Error" message:@"Some unknown error"];
-                });
-            } else {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [SimpleAlertView showAlertWithTitle:@"Calendar Access" message:@"Go to Settings - USports to switch on Calendar to create event."];
-                });
-            }
-        }];
+        [self addToCalendar:indexPath.item];
         
     }];
     
@@ -168,14 +126,79 @@
     return @[deleteAction, calendarAction];
 }
 
-- (void) deleteAction: (NSIndexPath *) indexPath {
-    NSDictionary * book = self.books[indexPath.item];
+- (void) calendarAction: (UIButton *)sender {
+    [self addToCalendar:sender.tag];
+}
+
+- (void) addToCalendar: (NSUInteger)index {
+    EKEventStore * eventStore = [[EKEventStore alloc] init];
+    [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+        if (granted && error == nil) {
+            EKEvent * event = [EKEvent eventWithEventStore:eventStore];
+            
+            
+            NSDictionary * book = self.books[index];
+            
+            if ([book valueForKey:@"facility"] != nil) {
+                event.title = [book valueForKey:@"facility"];
+            } else {
+                event.title = @"Exercise";
+            }
+            
+            NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+            dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+            dateFormatter.dateFormat = @"(EEE) dd MMMM   yyyy HH:mm";
+            NSArray * timeTokens = [[book valueForKey:@"time"] componentsSeparatedByString:@"-"];
+            NSString * startTime = [NSString stringWithFormat:@"%@ %@", [book valueForKey:@"date"], timeTokens[0]];
+            NSString * endTime = [NSString stringWithFormat:@"%@ %@", [book valueForKey:@"date"], timeTokens[1]];
+            
+            NSDate * startDate = [dateFormatter dateFromString:startTime];
+            NSDate * endDate = [dateFormatter dateFromString:endTime];
+            if (startTime != nil && endDate != nil) {
+                event.startDate = startDate;
+                event.endDate = endDate;
+                event.location = [book valueForKey:@"venue"];
+                event.notes = [book valueForKey:@"deadline"];
+                event.calendar = eventStore.defaultCalendarForNewEvents;
+                NSError * error = nil;
+                [eventStore saveEvent:event span:EKSpanThisEvent commit:true error:&error];
+                if (error == nil) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [SIMPLEALERT showAlertWithTitle:@"Calendar event created" message:[NSString stringWithFormat:@"Date: %@\nTime: %@\nGo to Calendar app and check it out", [book valueForKey:@"date"], [book valueForKey:@"time"]] defaultTitle:@"View" defaultHandler:^{
+                            EKEventViewController *eventViewController = [[EKEventViewController alloc] init];
+                            eventViewController.event = event;
+                            eventViewController.allowsEditing = YES;
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self presentViewController:eventViewController animated:YES completion:nil];
+                            });
+                        }];
+                    });
+                    return;
+                }
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SIMPLEALERT showAlertWithTitle:@"Error" message:@"Some unknown error"];
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SIMPLEALERT showAlertWithTitle:@"Calendar Access" message:@"Go to Settings - USports to switch on Calendar to create event."];
+            });
+        }
+    }];
+}
+
+- (void) deleteAction: (UIButton *)sender {
+    [self deleteBooking:sender.tag sender:sender];
+}
+
+- (void) deleteBooking: (NSUInteger)index sender: (UIView *)sender {
+    NSDictionary * book = self.books[index];
     if ([book valueForKey:@"id"] == nil) {
-        [SimpleAlertView showAlertWithTitle:@"Notice" message:@"You can only cancel this booking in the counter."];
+        [SIMPLEALERT showAlertWithTitle:@"Notice" message:@"You can only cancel this booking in the counter."];
         return;
     }
-    [SimpleAlertView showAlertWithTitle:@"Warning" message:@"Are you sure you want to cancel this booking? You cannot undo it, yes you can, rebook it." destructiveTitle:@"I am sure" destructiveHandler:^(SIAlertView *alert) {
-        NSDictionary * book = self.books[indexPath.item];
+    [[[SimpleAlertViewController alloc] initWithViewController:self] showActionSheetWithTitle:[NSString stringWithFormat:@"Cancelling %@", [book objectForKey:@"facility"]] message:@"Are you sure you want to cancel this booking? You cannot undo it, and this booking will be released." destructiveTitle:@"I am sure" destructiveHandler:^{
+        NSDictionary * book = self.books[index];
         Connector * connector = [[Connector alloc] initWithSessionId:[User getSessionId]];
         MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.removeFromSuperViewOnHide = true;
@@ -189,14 +212,14 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 hud.labelText = @"Error";
                 [hud hide:true afterDelay:1.0];
-                [SimpleAlertView showAlertWithTitle:@"Error" message:@"Cannot delete your bookings."];
+                [SIMPLEALERT showAlertWithTitle:@"Error" message:@"Cannot delete your bookings."];
             });
         } partHandler:^{
             dispatch_async(dispatch_get_main_queue(), ^{
                 hud.labelText = @"confirm delete";
             });
         }];
-    }];
+    } source: sender];
 }
 
 - (void) refresh {
@@ -216,7 +239,7 @@
             [self.refreshControl endRefreshing];
             hud.labelText = @"Error";
             [hud hide:true afterDelay:1.0];
-            [SimpleAlertView showAlertWithTitle:@"Error" message:@"Cannot get your bookings."];
+            [SIMPLEALERT showAlertWithTitle:@"Error" message:@"Cannot get your bookings."];
         });
     }];
 }

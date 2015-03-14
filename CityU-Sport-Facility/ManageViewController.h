@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <EventKit/EventKit.h>
+#import <EventKitUI/EventKitUI.h>
 
 @interface ManageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

@@ -8,7 +8,7 @@
 
 #import "SelectDateViewController.h"
 #import <MBProgressHUD.h>
-#import "SimpleAlertView.h"
+#import "SimpleAlertViewController.h"
 #import "Connector.h"
 #import "User.h"
 #import "SelectFacilityViewController.h"
@@ -104,7 +104,7 @@
             [self.refreshControl endRefreshing];
             hud.labelText = @"Error";
             [hud hide:true afterDelay:1.0];
-            [SimpleAlertView showAlertWithTitle:@"Error" message:message];
+            [SIMPLEALERT showAlertWithTitle:@"Error" message:message];
         });
     } partHandler:^{
         dispatch_async(dispatch_get_main_queue(), ^{

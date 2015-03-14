@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ftW-9R-Q21">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ftW-9R-Q21">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Welcome-->
@@ -416,11 +419,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="BYk-GS-2Ns">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="195" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="BYk-GS-2Ns">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="booking" rowHeight="170" id="mjg-Ik-Zhx" customClass="BookingTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="booking" rowHeight="195" id="mjg-Ik-Zhx" customClass="BookingTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mjg-Ik-Zhx" id="3Fw-4v-mJh">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -491,16 +494,56 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQK-EU-hLJ">
+                                                    <rect key="frame" x="8" y="161" width="584" height="30"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDD-s9-BDI">
+                                                            <rect key="frame" x="180" y="0.0" width="112" height="30"/>
+                                                            <state key="normal" title="Add to Calendar"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z68-uh-3tV">
+                                                            <rect key="frame" x="352" y="0.0" width="48" height="30"/>
+                                                            <state key="normal" title="Cancel">
+                                                                <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="centerY" secondItem="z68-uh-3tV" secondAttribute="centerY" id="6be-M3-Tov"/>
+                                                        <constraint firstAttribute="width" secondItem="rDD-s9-BDI" secondAttribute="height" multiplier="584:41" id="JV3-QA-q0d"/>
+                                                        <constraint firstAttribute="width" secondItem="rDD-s9-BDI" secondAttribute="width" multiplier="0.3" id="Kd2-3a-9td"/>
+                                                        <constraint firstAttribute="width" secondItem="z68-uh-3tV" secondAttribute="width" multiplier="3" id="UOc-5z-dQ1"/>
+                                                        <constraint firstAttribute="height" constant="30" id="VtK-nu-8Ls"/>
+                                                        <constraint firstItem="rDD-s9-BDI" firstAttribute="height" secondItem="dQK-EU-hLJ" secondAttribute="height" id="aSL-If-lN5"/>
+                                                        <constraint firstItem="z68-uh-3tV" firstAttribute="height" secondItem="dQK-EU-hLJ" secondAttribute="height" id="g8U-yb-3TC"/>
+                                                        <constraint firstAttribute="centerY" secondItem="rDD-s9-BDI" secondAttribute="centerY" id="ihp-TS-HLe"/>
+                                                        <constraint firstAttribute="centerX" secondItem="z68-uh-3tV" secondAttribute="leading" constant="-60" id="jg4-Yz-ieb"/>
+                                                        <constraint firstAttribute="centerX" secondItem="rDD-s9-BDI" secondAttribute="trailing" id="oLr-O7-WI7"/>
+                                                        <constraint firstAttribute="width" secondItem="rDD-s9-BDI" secondAttribute="width" multiplier="3" id="v5D-w2-hzM"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="JV3-QA-q0d"/>
+                                                            <exclude reference="Kd2-3a-9td"/>
+                                                            <exclude reference="v5D-w2-hzM"/>
+                                                            <exclude reference="UOc-5z-dQ1"/>
+                                                        </mask>
+                                                    </variation>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="uGI-tF-NAJ" firstAttribute="trailing" secondItem="3Fw-4v-mJh" secondAttribute="trailingMargin" id="2QM-C2-I3p"/>
                                                 <constraint firstItem="PN0-su-q4F" firstAttribute="top" secondItem="uGI-tF-NAJ" secondAttribute="bottom" constant="2" id="4Pa-PR-KlO"/>
                                                 <constraint firstItem="uGI-tF-NAJ" firstAttribute="leading" secondItem="z6g-PD-wLe" secondAttribute="leading" id="5vn-Fp-Hdu"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="jwe-Oa-jQ9" secondAttribute="trailing" id="6NE-LC-7Cd"/>
+                                                <constraint firstAttribute="centerX" secondItem="dQK-EU-hLJ" secondAttribute="centerX" id="9we-Kr-Y3T"/>
                                                 <constraint firstItem="uGI-tF-NAJ" firstAttribute="top" secondItem="z6g-PD-wLe" secondAttribute="top" id="CYW-mI-uU0"/>
                                                 <constraint firstItem="jwe-Oa-jQ9" firstAttribute="leading" secondItem="uGI-tF-NAJ" secondAttribute="leading" id="EWU-We-1LU"/>
                                                 <constraint firstAttribute="centerX" secondItem="z6g-PD-wLe" secondAttribute="centerX" id="It4-QB-ZgQ"/>
                                                 <constraint firstItem="PN0-su-q4F" firstAttribute="top" secondItem="Vqz-OT-n97" secondAttribute="bottom" id="KGX-Rb-7DW"/>
+                                                <constraint firstItem="dQK-EU-hLJ" firstAttribute="leading" secondItem="3Fw-4v-mJh" secondAttribute="leadingMargin" id="Kd4-Ta-a99"/>
                                                 <constraint firstItem="jwe-Oa-jQ9" firstAttribute="leading" secondItem="3Fw-4v-mJh" secondAttribute="leadingMargin" id="LSf-IR-b3o"/>
                                                 <constraint firstAttribute="centerX" secondItem="uGI-tF-NAJ" secondAttribute="centerX" id="QXW-oi-7PG"/>
                                                 <constraint firstItem="PN0-su-q4F" firstAttribute="leading" secondItem="3Fw-4v-mJh" secondAttribute="leadingMargin" constant="5" id="UI8-HC-gUb"/>
@@ -513,6 +556,7 @@
                                                 <constraint firstItem="Vqz-OT-n97" firstAttribute="leading" secondItem="3Fw-4v-mJh" secondAttribute="leadingMargin" constant="5" id="gCr-1F-uOx"/>
                                                 <constraint firstItem="z6g-PD-wLe" firstAttribute="leading" secondItem="3Fw-4v-mJh" secondAttribute="leadingMargin" constant="5" id="iSb-MR-22a"/>
                                                 <constraint firstItem="uGI-tF-NAJ" firstAttribute="top" secondItem="z6g-PD-wLe" secondAttribute="bottom" constant="-1" id="jog-vO-1tR"/>
+                                                <constraint firstItem="PN0-su-q4F" firstAttribute="bottom" secondItem="dQK-EU-hLJ" secondAttribute="top" id="k5k-Ow-Ah7"/>
                                                 <constraint firstAttribute="centerX" secondItem="Vqz-OT-n97" secondAttribute="centerX" id="ko0-uM-ZTp"/>
                                                 <constraint firstItem="jwe-Oa-jQ9" firstAttribute="leading" secondItem="3Fw-4v-mJh" secondAttribute="leadingMargin" id="nbn-xe-j2S"/>
                                                 <constraint firstItem="z6g-PD-wLe" firstAttribute="top" secondItem="3Fw-4v-mJh" secondAttribute="topMargin" id="oru-UM-qyT"/>
@@ -545,6 +589,8 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="calendarButton" destination="rDD-s9-BDI" id="xel-qC-hLb"/>
+                                            <outlet property="cancelButton" destination="z68-uh-3tV" id="MQU-si-40v"/>
                                             <outlet property="dateLabel" destination="z6g-PD-wLe" id="vKE-Aj-0xe"/>
                                             <outlet property="deadlineLabel" destination="PN0-su-q4F" id="TiK-qb-BP8"/>
                                             <outlet property="facilityLabel" destination="uGI-tF-NAJ" id="3Fc-hw-L8U"/>
@@ -567,21 +613,14 @@
                             <constraint firstAttribute="bottom" secondItem="BYk-GS-2Ns" secondAttribute="bottom" id="y5a-iw-vHk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="My Bookings" id="N8a-22-PO5">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="fnW-if-Zol">
-                            <connections>
-                                <action selector="editAction:" destination="9DM-hR-Z5F" id="W6n-05-Zls"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="My Bookings" id="N8a-22-PO5"/>
                     <connections>
-                        <outlet property="editButton" destination="fnW-if-Zol" id="tCW-4i-b8C"/>
                         <outlet property="tableView" destination="BYk-GS-2Ns" id="WQp-cO-L5d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7m-7I-OgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3655" y="-69"/>
+            <point key="canvasLocation" x="3655" y="-74"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hYd-GW-eIS">

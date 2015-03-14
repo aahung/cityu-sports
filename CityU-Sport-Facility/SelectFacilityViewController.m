@@ -8,7 +8,7 @@
 
 #import "SelectFacilityViewController.h"
 #import <MBProgressHUD.h>
-#import "SimpleAlertView.h"
+#import "SimpleAlertViewController.h"
 #import "Connector.h"
 #import "User.h"
 #import "SelectCourtViewController.h"
@@ -76,7 +76,7 @@
         self.facilities = facilities;
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([self.facilities count] == 0) {
-                [SimpleAlertView showAlertWithTitle:@"Sorry" message:@"There is no remaining available" dismissHandler:^{
+                [SIMPLEALERT showAlertWithTitle:@"Sorry" message:@"There is no remaining available" dismissHandler:^{
                     [self performSegueWithIdentifier:@"unwind" sender:self];
                 }];
             }
@@ -89,7 +89,7 @@
             [self.refreshControl endRefreshing];
             hud.labelText = @"Error";
             [hud hide:true afterDelay:1.0];
-            [SimpleAlertView showAlertWithTitle:@"Error" message:message];
+            [SIMPLEALERT showAlertWithTitle:@"Error" message:message];
         });
     }];
 }
