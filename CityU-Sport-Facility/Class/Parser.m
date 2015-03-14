@@ -159,7 +159,7 @@
 
 + (NSString *)getUserTypeByDateURLString:(NSString *)dateURLString {
     NSArray * tokens = [dateURLString componentsSeparatedByString:@"p_user_type_no="];
-    if ([tokens count] > 0) {
+    if ([tokens count] > 1) {
         NSString * userType = tokens[1];
         tokens = [userType componentsSeparatedByString:@"&"];
         if ([tokens count] > 0) {
