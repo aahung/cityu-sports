@@ -3,10 +3,10 @@ unofficial cityu sport facility booking app
 
 ### Screenshots
 
-![sc1](https://github.com/Aahung/cityu-sports/blob/master/screenshots/sc1.png)
-![sc2](https://github.com/Aahung/cityu-sports/blob/master/screenshots/sc2.png)
-![sc3](https://github.com/Aahung/cityu-sports/blob/master/screenshots/sc3.png)
-![sc4](https://github.com/Aahung/cityu-sports/blob/master/screenshots/sc4.png)
+<img src="https://github.com/Aahung/cityu-sports/blob/master/screenshots/sc1.png" style="max-width: 25%"/>
+<img src="https://github.com/Aahung/cityu-sports/blob/master/screenshots/sc2.png" style="max-width: 25%"/>
+<img src="https://github.com/Aahung/cityu-sports/blob/master/screenshots/sc3.png" style="max-width: 25%"/>
+<img src="https://github.com/Aahung/cityu-sports/blob/master/screenshots/sc4.png" style="max-width: 25%"/>
 
 ### 1.1 (27):
 Optimize UI, slimmer font
