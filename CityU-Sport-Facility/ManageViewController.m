@@ -27,8 +27,26 @@
     UIImageView * bgImageView = [[UIImageView alloc] init];
     [bgImageView setImage:[UIImage imageNamed:@"bg"]];
     self.tableView.backgroundView = bgImageView;
-    self.tableView.backgroundView.alpha = 0.3;
+    self.tableView.backgroundView.alpha = 0.15;
     self.tableView.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
+    
+    // initial empty label
+    self.emptyLabel = [[UILabel alloc] init];
+    
+    self.emptyLabel.text = @"You have no bookings.\nPlease pull down to refresh,\nor make a booking in \"Booking\".";
+    self.emptyLabel.textColor = [UIColor blackColor];
+    self.emptyLabel.numberOfLines = 0;
+    self.emptyLabel.textAlignment = NSTextAlignmentCenter;
+    self.emptyLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:20];
+    [self.emptyLabel sizeToFit];
+    self.emptyLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    NSArray * constraints = @[
+                              [NSLayoutConstraint constraintWithItem:self.emptyLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0],
+                              [NSLayoutConstraint constraintWithItem:self.emptyLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
+    [self.view addSubview:self.emptyLabel];
+    [self.view addConstraints:constraints];
+    
+    
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"pull to refresh"];
@@ -48,6 +66,19 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if ([self.books count] > 0) {
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        self.emptyLabel.hidden = true;
+        return 1;
+    } else {
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.emptyLabel.hidden = false;
+        return 0;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -93,11 +124,13 @@
     [cell.cancelButton addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
     cell.calendarButton.tag = indexPath.row;
     [cell.calendarButton addTarget:self action:@selector(calendarAction:) forControlEvents:UIControlEventTouchUpInside];
+    cell.shareButton.tag = indexPath.row;
+    [cell.shareButton addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 195.0;
+    return 190;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -124,6 +157,28 @@
     calendarAction.backgroundColor = [UIColor colorWithRed:0.0 green:122.0/255 blue:1.0 alpha:1.0];
     
     return @[deleteAction, calendarAction];
+}
+
+- (void) shareAction: (UIButton *)sender {
+    NSDictionary * book = self.books[sender.tag];
+    NSString *textToShare = [NSString stringWithFormat:@"I made a booking for %@ (%@) on %@ during %@ on CityU Sport Facility App", [book objectForKey:@"facility"], [book objectForKey:@"venue"], [book objectForKey:@"date"], [book objectForKey:@"time"]];
+    NSURL *myWebsite = [NSURL URLWithString:@"https://appsto.re/hk/QC6t5.i"];
+    
+    NSArray *objectsToShare = @[textToShare, myWebsite];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:objectsToShare applicationActivities:nil];
+    
+    NSArray *excludeActivities = @[UIActivityTypeAirDrop,
+                                   UIActivityTypePrint,
+                                   UIActivityTypeAssignToContact,
+                                   UIActivityTypeSaveToCameraRoll,
+                                   UIActivityTypeAddToReadingList,
+                                   UIActivityTypePostToFlickr,
+                                   UIActivityTypePostToVimeo];
+    
+    activityVC.excludedActivityTypes = excludeActivities;
+    
+    [self presentViewController:activityVC animated:YES completion:nil];
 }
 
 - (void) calendarAction: (UIButton *)sender {
@@ -160,25 +215,30 @@
                 event.location = [book valueForKey:@"venue"];
                 event.notes = [book valueForKey:@"deadline"];
                 event.calendar = eventStore.defaultCalendarForNewEvents;
-                NSError * error = nil;
-                [eventStore saveEvent:event span:EKSpanThisEvent commit:true error:&error];
-                if (error == nil) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [SIMPLEALERT showAlertWithTitle:@"Calendar event created" message:[NSString stringWithFormat:@"Date: %@\nTime: %@\nGo to Calendar app and check it out", [book valueForKey:@"date"], [book valueForKey:@"time"]] defaultTitle:@"View" defaultHandler:^{
-                            EKEventViewController *eventViewController = [[EKEventViewController alloc] init];
-                            eventViewController.event = event;
-                            eventViewController.allowsEditing = YES;
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [self presentViewController:eventViewController animated:YES completion:nil];
-                            });
+                        [SIMPLEALERT showAlertWithTitle:@"Calendar event" message:[NSString stringWithFormat:@"Title: %@\nDate: %@\nTime: %@\n", event.title, [book valueForKey:@"date"], [book valueForKey:@"time"]] defaultTitle:@"Add and view" defaultHandler:^{
+                            NSError * error = nil;
+                            [eventStore saveEvent:event span:EKSpanThisEvent commit:true error:&error];
+                            if (error == nil) {
+                                EKEventViewController *eventViewController = [[EKEventViewController alloc] init];
+                                eventViewController.event = event;
+                                eventViewController.allowsEditing = YES;
+                                eventViewController.modalInPopover = NO;
+                                eventViewController.delegate = self;
+                                UINavigationController *nav = [[UINavigationController alloc]
+                                                               initWithRootViewController:eventViewController];
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [self presentViewController:nav animated:YES completion:nil];
+                                });
+                                return;
+                            }
                         }];
                     });
-                    return;
-                }
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SIMPLEALERT showAlertWithTitle:@"Error" message:@"Some unknown error"];
+                });
             }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [SIMPLEALERT showAlertWithTitle:@"Error" message:@"Some unknown error"];
-            });
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [SIMPLEALERT showAlertWithTitle:@"Calendar Access" message:@"Go to Settings - USports to switch on Calendar to create event."];
@@ -252,6 +312,12 @@
         [self.tableView setEditing:true animated:true];
         self.editButton.title = @"Done";
     }
+}
+
+- (void)eventViewController:(EKEventViewController *)controller didCompleteWithAction:(EKEventViewAction)action {
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 @end

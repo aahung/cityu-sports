@@ -10,12 +10,14 @@
 #import <EventKit/EventKit.h>
 #import <EventKitUI/EventKitUI.h>
 
-@interface ManageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ManageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EKEventViewDelegate>
 
 @property NSArray * books;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property UIRefreshControl *refreshControl;
 - (IBAction)editAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+
+@property UILabel * emptyLabel;
 
 @end

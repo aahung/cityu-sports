@@ -78,7 +78,7 @@
             NSString * time = @"";
             for (HTMLElement * small in smalls) {
                 if (small == smalls[0]) {
-                    [book setObject:small.textContent forKey:@"date"];
+                    [book setObject:[small.textContent stringByReplacingOccurrencesOfString:@"  " withString:@" "] forKey:@"date"];
                 } else {
                     time = [time stringByAppendingString:small.textContent];
                 }

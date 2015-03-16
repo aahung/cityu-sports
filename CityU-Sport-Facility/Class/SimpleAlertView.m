@@ -28,7 +28,7 @@
 }
 
 
-+ (void) showAlertWithTitle:(NSString *)title message:(NSString *)message destructiveTitle: (NSString *) destructiveTitle destructiveHandler: (void(^)(SIAlertView * alert)) destructiveHandler {
++ (void) showAlertWithTitle:(NSString *)title message:(NSString *)message destructiveTitle: (NSString *) destructiveTitle destructiveHandler: (void(^)()) destructiveHandler {
     SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:title andMessage:message];
     [alertView addButtonWithTitle:@"Cancel"
                              type:SIAlertViewButtonTypeDefault
@@ -40,7 +40,7 @@
     [alertView show];
 }
 
-+ (void) showAlertWithTitle:(NSString *)title message:(NSString *)message defaultTitle: (NSString *) defaultTitle defaultHandler: (void(^)(SIAlertView * alert)) defaultHandler {
++ (void) showAlertWithTitle:(NSString *)title message:(NSString *)message defaultTitle: (NSString *) defaultTitle defaultHandler: (void(^)()) defaultHandler {
     SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:title andMessage:message];
     [alertView addButtonWithTitle:@"Cancel"
                              type:SIAlertViewButtonTypeCancel

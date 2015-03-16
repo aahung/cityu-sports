@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *deadlineLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *calendarButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
+
 
 
 @end

@@ -1,7 +1,12 @@
 # CityU Sport Facility
 unofficial cityu sport facility booking app
 
-### 1.0.3 (25):
+### 1.1 (27):
+Optimize UI, slimmer font
+Add view and edit action after add to calendar
+Add share button
+
+### 1.0.3 (25): app store
 [iOS 7] Fixed the bug in wrong segue causes back button("< Welcome") appears in the navigation bar after log in. 
 
 ### 1.0.2 (23, 24): app store

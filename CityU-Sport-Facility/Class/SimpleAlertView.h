@@ -13,6 +13,6 @@
 
 + (void) showAlertWithTitle: (NSString *) title message: (NSString *) message;
 + (void) showAlertWithTitle: (NSString *) title message: (NSString *) message dismissHandler: (void(^)())dismissHandler;
-+ (void) showAlertWithTitle:(NSString *)title message:(NSString *)message destructiveTitle: (NSString *) destructiveTitle destructiveHandler: (void(^)(SIAlertView * alert)) destructiveHandler;
-+ (void) showAlertWithTitle:(NSString *)title message:(NSString *)message defaultTitle: (NSString *) defaultTitle defaultHandler: (void(^)(SIAlertView * alert)) defaultHandler;
++ (void) showAlertWithTitle:(NSString *)title message:(NSString *)message destructiveTitle: (NSString *) destructiveTitle destructiveHandler: (void(^)()) destructiveHandler;
++ (void) showAlertWithTitle:(NSString *)title message:(NSString *)message defaultTitle: (NSString *) defaultTitle defaultHandler: (void(^)()) defaultHandler;
 @end

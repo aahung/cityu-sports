@@ -25,7 +25,7 @@
     UIImageView * bgImageView = [[UIImageView alloc] init];
     [bgImageView setImage:[UIImage imageNamed:@"bg"]];
     self.tableView.backgroundView = bgImageView;
-    self.tableView.backgroundView.alpha = 0.3;
+    self.tableView.backgroundView.alpha = 0.15;
     self.tableView.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
