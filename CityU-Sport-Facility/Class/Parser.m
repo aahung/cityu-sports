@@ -179,7 +179,7 @@
         NSString * href = a.attributes[@"href"];
         if (href != nil) {
             NSArray * tokens = [href componentsSeparatedByString:@"date_data('"];
-            if ([tokens count] < 1) {
+            if ([tokens count] < 2) {
                 continue;
             }
             NSString * date = tokens[1];

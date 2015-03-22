@@ -154,6 +154,9 @@
     op.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [request setValue:[Connector userAgent] forHTTPHeaderField:@"User-Agent"];
     [request setValue:referer forHTTPHeaderField:@"Referer"];
+#ifdef DEBUG
+    NSLog(@"%@", [request allHTTPHeaderFields]);
+#endif
     [op setCompletionBlockWithSuccess:successHandler failure:errorHandler];
     [[NSOperationQueue mainQueue] addOperation:op];
     
