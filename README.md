@@ -1,7 +1,22 @@
 # CityU Sport Facility
-unofficial cityu sport facility booking app
+unofficial cityu sport facility booking app for iOS
 
-### [Screenshots](https://github.com/Aahung/cityu-sports/tree/master/screenshots)
+## Install
+[Link](https://xinhong.me/idea/cityu-sport-facility/)
+
+## Screenshots
+[Screenshots](https://github.com/Aahung/cityu-sports/tree/master/screenshots)
+
+## Acknowledgements
+license file may found in [here](CityU-Sport-Facility/licenses) or Setting -> USports -> Ackowledgements on your iPhone / iPad
+
+* [AFNetworking](https://github.com/AFNetworking/AFNetworking)
+* [HTMLReader](https://github.com/nolanw/HTMLReader)
+* [icons8](http://icons8.com)
+* [MBProgressHUD](https://github.com/jdg/MBProgressHUD)
+* [SIAlertView](https://github.com/Sumi-Interactive/SIAlertView)
+
+## Change log
 
 ### 1.1 (27):
 Optimize UI, slimmer font
