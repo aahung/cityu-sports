@@ -1,4 +1,4 @@
-# CityU Sport Facility
+# CityU Sport Facility [![Build Status](https://travis-ci.org/Aahung/cityu-sports.svg?branch=master)](https://travis-ci.org/Aahung/cityu-sports)
 unofficial cityu sport facility booking app for iOS
 
 ## Install
