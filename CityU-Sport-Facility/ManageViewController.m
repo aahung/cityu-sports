@@ -122,6 +122,7 @@
     }
     cell.cancelButton.tag = indexPath.row;
     [cell.cancelButton addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
+    cell.cancelButton.enabled = [book valueForKey:@"id"] != nil;
     cell.calendarButton.tag = indexPath.row;
     [cell.calendarButton addTarget:self action:@selector(calendarAction:) forControlEvents:UIControlEventTouchUpInside];
     cell.shareButton.tag = indexPath.row;

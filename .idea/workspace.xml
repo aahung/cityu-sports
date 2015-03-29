@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a0f2f4e-277b-4770-851c-f2e6327099a2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CityU-Sport-Facility/Images.xcassets/calendar.imageset/calendar-32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CityU-Sport-Facility/Images.xcassets/calendar.imageset/calendar-50.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CityU-Sport-Facility/Images.xcassets/calendar.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CityU-Sport-Facility/Base.lproj/Main.storyboard" afterPath="$PROJECT_DIR$/CityU-Sport-Facility/Base.lproj/Main.storyboard" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CityU-Sport-Facility/ManageViewController.m" afterPath="$PROJECT_DIR$/CityU-Sport-Facility/ManageViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CityU-Sport-Facility/Class/Parser.m" afterPath="$PROJECT_DIR$/CityU-Sport-Facility/Class/Parser.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CityU-Sport-Facility/SelectCourtViewController.m" afterPath="$PROJECT_DIR$/CityU-Sport-Facility/SelectCourtViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CityU-Sport-Facility/Class/SimpleAlertView.h" afterPath="$PROJECT_DIR$/CityU-Sport-Facility/Class/SimpleAlertView.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CityU-Sport-Facility/Class/SimpleAlertView.m" afterPath="$PROJECT_DIR$/CityU-Sport-Facility/Class/SimpleAlertView.m" />
-    </list>
+    <list default="true" id="7a0f2f4e-277b-4770-851c-f2e6327099a2" name="Default" comment="" />
     <ignored path="cityu-sports.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -233,13 +221,13 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -263,6 +251,11 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CityU-Sport-Facility/Base.lproj/Main.storyboard">
+      <provider selected="true" editor-type-id="appcode-designer">
+        <state ui-designer-zoom="1.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CityU-Sport-Facility/Base.lproj/Main.storyboard">
       <provider selected="true" editor-type-id="appcode-designer">
         <state ui-designer-zoom="1.0" />
