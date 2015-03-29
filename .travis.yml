@@ -1,0 +1,3 @@
+language: objective-c
+xcode_workspace: CityU-Sport-Facility.xcworkspace
+xcode_scheme: CityU-Sport-Facility
