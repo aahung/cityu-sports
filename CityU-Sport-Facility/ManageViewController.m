@@ -216,7 +216,7 @@
                 event.location = [book valueForKey:@"venue"];
                 event.notes = [book valueForKey:@"deadline"];
                 event.calendar = eventStore.defaultCalendarForNewEvents;
-                    dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                         [SIMPLEALERT showAlertWithTitle:@"Calendar event" message:[NSString stringWithFormat:@"Title: %@\nDate: %@\nTime: %@\n", event.title, [book valueForKey:@"date"], [book valueForKey:@"time"]] defaultTitle:@"Add and view" defaultHandler:^{
                             NSError * error = nil;
                             [eventStore saveEvent:event span:EKSpanThisEvent commit:true error:&error];
@@ -228,22 +228,22 @@
                                 eventViewController.delegate = self;
                                 UINavigationController *nav = [[UINavigationController alloc]
                                                                initWithRootViewController:eventViewController];
-                                dispatch_async(dispatch_get_main_queue(), ^{
+                                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                                     [self presentViewController:nav animated:YES completion:nil];
-                                });
+                                }];
                                 return;
                             }
                         }];
-                    });
+                    }];
             } else {
-                dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     [SIMPLEALERT showAlertWithTitle:@"Error" message:@"Some unknown error"];
-                });
+                }];
             }
         } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [SIMPLEALERT showAlertWithTitle:@"Calendar Access" message:@"Go to Settings - USports to switch on Calendar to create event."];
-            });
+            }];
         }
     }];
 }
@@ -265,20 +265,20 @@
         hud.removeFromSuperViewOnHide = true;
         hud.labelText = @"Request confirmation";
         [connector deleteBooking:[User getEID] sid:[User getSID] password:[User getPassword] bookingId:[book valueForKey:@"id"] success:^() {
-            dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [self refresh];
                 [hud hide:true];
-            });
+            }];
         } error:^() {
-            dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 hud.labelText = @"Error";
                 [hud hide:true afterDelay:1.0];
                 [SIMPLEALERT showAlertWithTitle:@"Error" message:@"Cannot delete your bookings."];
-            });
+            }];
         } partHandler:^{
-            dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 hud.labelText = @"confirm delete";
-            });
+            }];
         }];
     } source: sender];
 }
@@ -290,18 +290,18 @@
     Connector * connector = [[Connector alloc] initWithSessionId:[User getSessionId]];
     [connector requestMyBookings:[User getEID] sid:[User getSID] success:^(AFHTTPRequestOperation * operation, NSArray * books) {
         self.books = books;
-        dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.refreshControl endRefreshing];
             [hud hide:true];
             [self.tableView reloadData];
-        });
+        }];
     } error:^(AFHTTPRequestOperation * operation, id responseObject) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.refreshControl endRefreshing];
             hud.labelText = @"Error";
             [hud hide:true afterDelay:1.0];
             [SIMPLEALERT showAlertWithTitle:@"Error" message:@"Cannot get your bookings."];
-        });
+        }];
     }];
 }
 

@@ -100,7 +100,7 @@
     
     [SIMPLEALERT showAlertWithTitle:@"Confirm" message:[NSString stringWithFormat:@"You are going to book %@ at %@", [court valueForKey:@"courtReadable"], [court valueForKey:@"timeReadable"]] defaultTitle:@"Confirm" defaultHandler:^() {
         
-        dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             
             [self.bookParameters setObject:[court valueForKey:@"date"] forKey:@"p_date"];
             [self.bookParameters setObject:[court valueForKey:@"court"] forKey:@"p_court"];
@@ -114,22 +114,22 @@
             
             Connector * connector = [[Connector alloc] initWithSessionId:[User getSessionId]];
             [connector makeBooking:[User getEID] password:[User getPassword] bookParameters:self.bookParameters bookReferer:self.bookReferer success:^(NSString * message){
-                dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     [hud hide:true];
                     [SIMPLEALERT showAlertWithTitle:@"Book result" message:message];
-                });
+                }];
             } error:^(NSString * message) {
-                dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     hud.labelText = @"Error";
                     [hud hide:true afterDelay:1.0];
                     [SIMPLEALERT showAlertWithTitle:@"Error" message:message];
-                });
+                }];
             } partHandler:^{
-                dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     hud.labelText = @"confirm booking";
-                });
+                }];
             }];
-        });
+        }];
     }];
     
 }
@@ -144,7 +144,7 @@
         self.bookReferer = bookReferer;
         self.courts = courts;
         self.times = [courts.allKeys sortedArrayUsingSelector:@selector(compare:)];
-        dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             if ([self.courts count] == 0) {
                 [SIMPLEALERT showAlertWithTitle:@"Sorry" message:@"There is no remaining available" dismissHandler:^{
                     [self performSegueWithIdentifier:@"unwind" sender:self];
@@ -153,16 +153,18 @@
             [self.refreshControl endRefreshing];
             [hud hide:true];
             [self.tableView reloadData];
-        });
+        }];
     } error:^(NSString * message) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.refreshControl endRefreshing];
             hud.labelText = @"Error";
             [hud hide:true afterDelay:1.0];
             [SIMPLEALERT showAlertWithTitle:@"Error" message:message];
-        });
+        }];
     } partHandler:^{
-        hud.labelText = @"Request court list (~5 secs)";
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            hud.labelText = @"Request court list (~5 secs)";
+        }];
     }];
 }
 

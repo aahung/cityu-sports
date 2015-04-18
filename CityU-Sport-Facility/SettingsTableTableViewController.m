@@ -42,9 +42,9 @@
         // log out
         [User clearUser];
         [SIMPLEALERT showAlertWithTitle:@"Goodbye" message:@"Your user info has been cleared." dismissHandler:^{
-            dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [self dismissViewControllerAnimated:true completion:nil];
-            });
+            }];
         }];
     }
     

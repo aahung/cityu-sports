@@ -94,22 +94,22 @@
     [connector requestDates:[User getEID] sid:[User getSID] success:^(NSArray * dates, NSString * userType) {
         [User setUserType:userType];
         self.dates = dates;
-        dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.refreshControl endRefreshing];
             [hud hide:true];
             [self.tableView reloadData];
-        });
+        }];
     } error:^(NSString * message) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.refreshControl endRefreshing];
             hud.labelText = @"Error";
             [hud hide:true afterDelay:1.0];
             [SIMPLEALERT showAlertWithTitle:@"Error" message:message];
-        });
+        }];
     } partHandler:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             hud.labelText = @"Request date list";
-        });
+        }];
     }];
 }
 

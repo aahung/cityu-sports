@@ -74,7 +74,7 @@
     Connector * connector = [[Connector alloc] initWithSessionId:[User getSessionId]];
     [connector requestFacilities:[User getEID] sid:[User getSID] date:[self date] userType:[User getUserType] success:^(NSArray * facilities) {
         self.facilities = facilities;
-        dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             if ([self.facilities count] == 0) {
                 [SIMPLEALERT showAlertWithTitle:@"Sorry" message:@"There is no remaining available" dismissHandler:^{
                     [self performSegueWithIdentifier:@"unwind" sender:self];
@@ -83,14 +83,14 @@
             [self.refreshControl endRefreshing];
             [hud hide:true];
             [self.tableView reloadData];
-        });
+        }];
     } error:^(NSString * message) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.refreshControl endRefreshing];
             hud.labelText = @"Error";
             [hud hide:true afterDelay:1.0];
             [SIMPLEALERT showAlertWithTitle:@"Error" message:message];
-        });
+        }];
     }];
 }
 
