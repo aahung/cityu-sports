@@ -8,7 +8,6 @@
 
 #import "ManageViewController.h"
 #import "BookingTableViewCell.h"
-#import <MBProgressHUD.h>
 #import "Connector.h"
 #import "User.h"
 #import "SimpleAlertViewController.h"
@@ -23,12 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIImageView * bgImageView = [[UIImageView alloc] init];
-    [bgImageView setImage:[UIImage imageNamed:@"bg"]];
-    self.tableView.backgroundView = bgImageView;
-    self.tableView.backgroundView.alpha = 0.15;
-    self.tableView.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
+    [self setTableViewBackground:self.tableView];
     
     // initial empty label
     self.emptyLabel = [[UILabel alloc] init];
@@ -49,7 +43,6 @@
     
     
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"pull to refresh"];
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     
@@ -57,6 +50,9 @@
     self.books = @[];
     
     [self refresh];
+    
+    // remove extra rows
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -261,45 +257,42 @@
     [[[SimpleAlertViewController alloc] initWithViewController:self] showActionSheetWithTitle:[NSString stringWithFormat:@"Cancelling %@", [book objectForKey:@"facility"]] message:@"Are you sure you want to cancel this booking? You cannot undo it, and this booking will be released." destructiveTitle:@"I am sure" destructiveHandler:^{
         NSDictionary * book = self.books[index];
         Connector * connector = [[Connector alloc] initWithSessionId:[User getSessionId]];
-        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.removeFromSuperViewOnHide = true;
-        hud.labelText = @"Request confirmation";
+        [self showProgressWithTitle:@"Requesting confirmation..."];
         [connector deleteBooking:[User getEID] sid:[User getSID] password:[User getPassword] bookingId:[book valueForKey:@"id"] success:^() {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self showSuccessProgressWithTitle:@"Confirmed"];
+                [self finishProgress];
                 [self refresh];
-                [hud hide:true];
             }];
-        } error:^() {
+        } error:^(NSString *_message) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                hud.labelText = @"Error";
-                [hud hide:true afterDelay:1.0];
-                [SIMPLEALERT showAlertWithTitle:@"Error" message:@"Cannot delete your bookings."];
+                [self cancelProgress];
+                NSString *message = _message;
+                if (message == nil) message = @"Cannot delete your bookings.";
+                [SIMPLEALERT showAlertWithTitle:@"Error"
+                                        message:message];
             }];
         } partHandler:^{
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                hud.labelText = @"confirm delete";
+                [self showProgressWithTitle:@"Confirming..."];
             }];
         }];
     } source: sender];
 }
 
 - (void) refresh {
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.removeFromSuperViewOnHide = true;
-    hud.labelText = @"Request bookings";
+    [self showProgressWithTitle:@"Requesting bookings..."];
     Connector * connector = [[Connector alloc] initWithSessionId:[User getSessionId]];
     [connector requestMyBookings:[User getEID] sid:[User getSID] success:^(AFHTTPRequestOperation * operation, NSArray * books) {
         self.books = books;
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self finishProgress];
             [self.refreshControl endRefreshing];
-            [hud hide:true];
             [self.tableView reloadData];
         }];
     } error:^(AFHTTPRequestOperation * operation, id responseObject) {
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.refreshControl endRefreshing];
-            hud.labelText = @"Error";
-            [hud hide:true afterDelay:1.0];
             [SIMPLEALERT showAlertWithTitle:@"Error" message:@"Cannot get your bookings."];
         }];
     }];

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CSportsViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : CSportsViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *eidTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;

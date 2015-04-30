@@ -21,15 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIImageView * bgImageView = [[UIImageView alloc] init];
-    [bgImageView setImage:[UIImage imageNamed:@"bg"]];
-    self.tableView.backgroundView = bgImageView;
-    self.tableView.backgroundView.alpha = 0.15;
-    self.tableView.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
+    [self setTableViewBackground:self.tableView];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"pull to refresh"];
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     
@@ -135,9 +129,7 @@
 }
 
 - (void) refresh {
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.removeFromSuperViewOnHide = true;
-    hud.labelText = @"Request court URL";
+    [self showProgressWithTitle:@"Requesting court URL..."];
     Connector * connector = [[Connector alloc] initWithSessionId:[User getSessionId]];
     [connector requestCourts:[User getEID] sid:[User getSID] userType:[User getUserType] date:self.date facility: self.facility success:^(NSDictionary * courts, NSMutableDictionary * bookParameters, NSString * bookReferer) {
         self.bookParameters = bookParameters;
@@ -151,19 +143,18 @@
                 }];
             }
             [self.refreshControl endRefreshing];
-            [hud hide:true];
+            [self finishProgress];
             [self.tableView reloadData];
         }];
     } error:^(NSString * message) {
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.refreshControl endRefreshing];
-            hud.labelText = @"Error";
-            [hud hide:true afterDelay:1.0];
+            [self cancelProgress];
             [SIMPLEALERT showAlertWithTitle:@"Error" message:message];
         }];
     } partHandler:^{
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            hud.labelText = @"Request court list (~5 secs)";
+            [self showProgressWithTitle:@"Requesting court list (~5s)..."];
         }];
     }];
 }

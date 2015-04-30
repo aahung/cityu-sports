@@ -22,7 +22,7 @@
 
 - (void) requestMyBookings: (NSString *)eid sid: (NSString *)sid success :(void (^)(AFHTTPRequestOperation *, NSArray *))successHandler error:(void (^)(AFHTTPRequestOperation *, id))errorHandler;
 
-- (void) deleteBooking: (NSString *)eid sid: (NSString *)sid password: (NSString *)password bookingId: (NSString *)bookingId success :(void (^)())successHandler error:(void (^)())errorHandler partHandler: (void (^)())partHandler;
+- (void) deleteBooking: (NSString *)eid sid: (NSString *)sid password: (NSString *)password bookingId: (NSString *)bookingId success :(void (^)())successHandler error:(void (^)(NSString * message))errorHandler partHandler: (void (^)())partHandler;
 
 - (void) requestDates: (NSString *)eid sid: (NSString *)sid success :(void (^)(NSArray *, NSString *))successHandler error:(void (^)(NSString * message))errorHandler partHandler: (void (^)())partHandler;
 

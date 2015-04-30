@@ -21,6 +21,7 @@
 		B26F31FE1A85BA790026234F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B26F31FD1A85BA790026234F /* Images.xcassets */; };
 		B26F32011A85BA790026234F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26F31FF1A85BA790026234F /* LaunchScreen.xib */; };
 		B26F320D1A85BA790026234F /* CityU_Sport_FacilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B26F320C1A85BA790026234F /* CityU_Sport_FacilityTests.m */; };
+		B2C64CE91AF22F8800E60885 /* CSportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C64CE81AF22F8800E60885 /* CSportsViewController.m */; };
 		B2C774991A85BE220074FC92 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2C774981A85BE220074FC92 /* Settings.bundle */; };
 		B2C7749B1A85C01B0074FC92 /* FAQ.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B2C7749A1A85C01B0074FC92 /* FAQ.rtf */; };
 		B2C7749E1A85C12D0074FC92 /* FAQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C7749D1A85C12D0074FC92 /* FAQViewController.m */; };
@@ -69,6 +70,8 @@
 		B26F32061A85BA790026234F /* CityU-Sport-FacilityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CityU-Sport-FacilityTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26F320B1A85BA790026234F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B26F320C1A85BA790026234F /* CityU_Sport_FacilityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityU_Sport_FacilityTests.m; sourceTree = "<group>"; };
+		B2C64CE71AF22F8800E60885 /* CSportsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSportsViewController.h; sourceTree = "<group>"; };
+		B2C64CE81AF22F8800E60885 /* CSportsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSportsViewController.m; sourceTree = "<group>"; };
 		B2C774981A85BE220074FC92 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		B2C7749A1A85C01B0074FC92 /* FAQ.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = FAQ.rtf; sourceTree = "<group>"; };
 		B2C7749C1A85C12D0074FC92 /* FAQViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAQViewController.h; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				B2C774B91A85FEE00074FC92 /* SettingsTableTableViewController.m */,
 				B2C774AF1A85F8BF0074FC92 /* BookingTableViewCell.h */,
 				B2C774B01A85F8BF0074FC92 /* BookingTableViewCell.m */,
+				B2C64CE71AF22F8800E60885 /* CSportsViewController.h */,
+				B2C64CE81AF22F8800E60885 /* CSportsViewController.m */,
 			);
 			path = "CityU-Sport-Facility";
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 				B26F31F91A85BA790026234F /* ViewController.m in Sources */,
 				B2C7749E1A85C12D0074FC92 /* FAQViewController.m in Sources */,
 				B2C774BA1A85FEE00074FC92 /* SettingsTableTableViewController.m in Sources */,
+				B2C64CE91AF22F8800E60885 /* CSportsViewController.m in Sources */,
 				B25296E01AB46EE800652717 /* SimpleAlertViewController.m in Sources */,
 				B2C774A51A85CD620074FC92 /* User.m in Sources */,
 				B2C774A21A85CA9E0074FC92 /* SimpleAlertView.m in Sources */,

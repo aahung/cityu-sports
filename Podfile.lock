@@ -20,7 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.5.2):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - HTMLReader (0.7)
+  - HTMLReader (0.7.1)
   - MBProgressHUD (0.9.1)
   - SIAlertView (1.3)
 
@@ -32,8 +32,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
-  HTMLReader: 3add9294c417be17e80fd588deb17c534a60d2d8
-  MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
-  SIAlertView: d00609a1faa9d82f17b9f0b4eede64e84a577b10
+  HTMLReader: e6ba09514d125f45e810b6c6c1cebf3542f04d89
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  SIAlertView: 20c794b55eaf44d888773ea51647cf8907723919
 
 COCOAPODS: 0.36.1

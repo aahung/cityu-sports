@@ -7,7 +7,6 @@
 //
 
 #import "SelectFacilityViewController.h"
-#import <MBProgressHUD.h>
 #import "SimpleAlertViewController.h"
 #import "Connector.h"
 #import "User.h"
@@ -22,21 +21,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIImageView * bgImageView = [[UIImageView alloc] init];
-    [bgImageView setImage:[UIImage imageNamed:@"bg"]];
-    self.tableView.backgroundView = bgImageView;
-    self.tableView.backgroundView.alpha = 0.15;
-    self.tableView.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
+    [self setTableViewBackground:self.tableView];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"pull to refresh"];
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     
     self.facilities = @[];
     
     [self refresh];
+    
+    // remove extra rows
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -68,9 +64,7 @@
 }
 
 - (void) refresh {
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.removeFromSuperViewOnHide = true;
-    hud.labelText = @"Request facility list";
+    [self showProgressWithTitle:@"Requesting facility list..."];
     Connector * connector = [[Connector alloc] initWithSessionId:[User getSessionId]];
     [connector requestFacilities:[User getEID] sid:[User getSID] date:[self date] userType:[User getUserType] success:^(NSArray * facilities) {
         self.facilities = facilities;
@@ -81,14 +75,13 @@
                 }];
             }
             [self.refreshControl endRefreshing];
-            [hud hide:true];
+            [self finishProgress];
             [self.tableView reloadData];
         }];
     } error:^(NSString * message) {
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.refreshControl endRefreshing];
-            hud.labelText = @"Error";
-            [hud hide:true afterDelay:1.0];
+            [self cancelProgress];
             [SIMPLEALERT showAlertWithTitle:@"Error" message:message];
         }];
     }];

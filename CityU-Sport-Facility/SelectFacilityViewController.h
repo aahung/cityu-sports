@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CSportsViewController.h"
 
-@interface SelectFacilityViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface SelectFacilityViewController : CSportsViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property UIRefreshControl * refreshControl;

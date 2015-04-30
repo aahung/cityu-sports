@@ -95,7 +95,7 @@
     
 }
 
-- (void)deleteBooking:(NSString *)eid sid:(NSString *)sid password: (NSString *)password bookingId:(NSString *)bookingId success:(void (^)())successHandler error:(void (^)())errorHandler partHandler: (void (^)())partHandler{
+- (void)deleteBooking:(NSString *)eid sid:(NSString *)sid password: (NSString *)password bookingId:(NSString *)bookingId success:(void (^)())successHandler error:(void (^)(NSString *))errorHandler partHandler: (void (^)())partHandler{
     
     NSDictionary * parameters = @{
                                   @"p_session": self.sessionId,
@@ -109,7 +109,7 @@
         NSString * html = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSString * confirmNo = [Parser getConfirmNoByHTML:html];
         if (confirmNo == nil) {
-            errorHandler();
+            errorHandler(@"Failed to get confirmation number.");
             return;
         }
         partHandler();
@@ -120,12 +120,17 @@
                        @"p_sno": confirmNo
                        };
         [self makePOSTRequestWithURL:@"http://brazil.cityu.edu.hk:8754/fbi/owa/fbi_web_conf_msg_del.show" referer:@"http://brazil.cityu.edu.hk:8754/fbi/owa/fbi_web_conf_msg_del.show" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            successHandler();
+            NSString * html = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+            NSString *message = [Parser getMessageByHTML:html];
+            if ([message rangeOfString:@"Thank"].location == NSNotFound)
+                errorHandler(message);
+            else
+                successHandler();
         } error:^(AFHTTPRequestOperation *operation, id responseObject) {
-            errorHandler();
+            errorHandler(nil);
         }];
     } error: ^(AFHTTPRequestOperation *operation, id responseObject) {
-        errorHandler();
+        errorHandler(nil);
     }];
 }
 
@@ -311,7 +316,7 @@
 }
 
 + (NSString *)userAgent {
-    return @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36";
+    return @"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36";
 }
 
 @end

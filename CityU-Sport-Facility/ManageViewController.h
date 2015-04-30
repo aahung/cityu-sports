@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <EventKit/EventKit.h>
 #import <EventKitUI/EventKitUI.h>
+#import "CSportsViewController.h"
 
-@interface ManageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EKEventViewDelegate>
+@interface ManageViewController : CSportsViewController<UITableViewDataSource, UITableViewDelegate, EKEventViewDelegate>
 
 @property NSArray * books;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
