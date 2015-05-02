@@ -13,10 +13,12 @@
 
 @property MBProgressHUD *hud;
 
-- (void) setTableViewBackground: (UITableView *)tableView;
-- (void) showProgressWithTitle: (NSString *)title;
-- (void) showSuccessProgressWithTitle:(NSString *)title;
-- (void) finishProgress;
-- (void) cancelProgress;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property UIRefreshControl *refreshControl;
+
+- (void)showProgressWithTitle: (NSString *)title;
+- (void)showSuccessProgressWithTitle:(NSString *)title;
+- (void)finishProgress;
+- (void)cancelProgress;
 
 @end

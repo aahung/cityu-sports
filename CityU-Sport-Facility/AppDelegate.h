@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-+ (NSString * ) version;
++ (NSString *) version;
 
 @end
 

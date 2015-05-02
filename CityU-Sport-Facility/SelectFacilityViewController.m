@@ -21,30 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTableViewBackground:self.tableView];
-    
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refreshControl];
     
     self.facilities = @[];
     
     [self refresh];
-    
-    // remove extra rows
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    NSIndexPath * selectedIndexPath = [self.tableView indexPathForSelectedRow];
-    if (selectedIndexPath != nil) {
-        [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:true];
-    }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -63,7 +43,7 @@
     return cell;
 }
 
-- (void) refresh {
+- (void)refresh {
     [self showProgressWithTitle:@"Requesting facility list..."];
     Connector * connector = [[Connector alloc] initWithSessionId:[User getSessionId]];
     [connector requestFacilities:[User getEID] sid:[User getSID] date:[self date] userType:[User getUserType] success:^(NSArray * facilities) {
@@ -103,10 +83,6 @@
             return;
         }
     }
-}
-
-- (IBAction)unwindToContainerVC:(UIStoryboardSegue *)segue {
-    NSLog(@"unwind");
 }
 
 @end

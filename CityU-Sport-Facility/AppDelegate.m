@@ -14,7 +14,7 @@
 
 @implementation AppDelegate
 
-+ (NSString * ) version {
++ (NSString *)version {
     NSString * version = [[NSBundle mainBundle].infoDictionary valueForKey:@"CFBundleShortVersionString"];
     NSString * buildNumber = [[NSBundle mainBundle].infoDictionary valueForKey:@"CFBundleVersion"];
     return [NSString stringWithFormat:@"%@ (%@)", version, buildNumber];

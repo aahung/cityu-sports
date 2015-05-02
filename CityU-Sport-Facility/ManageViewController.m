@@ -14,6 +14,8 @@
 
 #define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
+#define DELETE_WARNING_MESSAGE @"Are you sure you want to cancel this booking? You cannot undo it, and this booking will be released."
+
 @interface ManageViewController ()
 
 @end
@@ -22,9 +24,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTableViewBackground:self.tableView];
     
-    // initial empty label
+    [self initEmptyLabel];
+    
+    self.books = @[];
+    
+    [self refresh];
+}
+
+- (void)initEmptyLabel {
     self.emptyLabel = [[UILabel alloc] init];
     
     self.emptyLabel.text = @"You have no bookings.\nPlease pull down to refresh,\nor make a booking in \"Booking\".";
@@ -33,37 +41,15 @@
     self.emptyLabel.textAlignment = NSTextAlignmentCenter;
     self.emptyLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:20];
     [self.emptyLabel sizeToFit];
+    
     self.emptyLabel.translatesAutoresizingMaskIntoConstraints = NO;
     NSArray * constraints = @[
                               [NSLayoutConstraint constraintWithItem:self.emptyLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0],
                               [NSLayoutConstraint constraintWithItem:self.emptyLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
+    
     [self.view addSubview:self.emptyLabel];
     [self.view addConstraints:constraints];
-    
-    
-    
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refreshControl];
-    
-    
-    self.books = @[];
-    
-    [self refresh];
-    
-    // remove extra rows
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if ([self.books count] > 0) {
@@ -156,7 +142,7 @@
     return @[deleteAction, calendarAction];
 }
 
-- (void) shareAction: (UIButton *)sender {
+- (void)shareAction: (UIButton *)sender {
     NSDictionary * book = self.books[sender.tag];
     NSString *textToShare = [NSString stringWithFormat:@"I made a booking for %@ (%@) on %@ during %@ on CityU Sport Facility App", [book objectForKey:@"facility"], [book objectForKey:@"venue"], [book objectForKey:@"date"], [book objectForKey:@"time"]];
     NSURL *myWebsite = [NSURL URLWithString:@"https://appsto.re/hk/QC6t5.i"];
@@ -178,63 +164,49 @@
     [self presentViewController:activityVC animated:YES completion:nil];
 }
 
-- (void) calendarAction: (UIButton *)sender {
+- (void)calendarAction: (UIButton *)sender {
     [self addToCalendar:sender.tag];
 }
 
-- (void) addToCalendar: (NSUInteger)index {
+- (void)addToCalendar: (NSUInteger)index {
     EKEventStore * eventStore = [[EKEventStore alloc] init];
     [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
         if (granted && error == nil) {
-            EKEvent * event = [EKEvent eventWithEventStore:eventStore];
-            
             
             NSDictionary * book = self.books[index];
             
-            if ([book valueForKey:@"facility"] != nil) {
-                event.title = [book valueForKey:@"facility"];
-            } else {
-                event.title = @"Exercise";
-            }
+            EKEvent * event;
             
-            NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-            dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
-            dateFormatter.dateFormat = @"(EEE) dd MMMM   yyyy HH:mm";
-            NSArray * timeTokens = [[book valueForKey:@"time"] componentsSeparatedByString:@"-"];
-            NSString * startTime = [NSString stringWithFormat:@"%@ %@", [book valueForKey:@"date"], timeTokens[0]];
-            NSString * endTime = [NSString stringWithFormat:@"%@ %@", [book valueForKey:@"date"], timeTokens[1]];
-            
-            NSDate * startDate = [dateFormatter dateFromString:startTime];
-            NSDate * endDate = [dateFormatter dateFromString:endTime];
-            if (startTime != nil && endDate != nil) {
-                event.startDate = startDate;
-                event.endDate = endDate;
-                event.location = [book valueForKey:@"venue"];
-                event.notes = [book valueForKey:@"deadline"];
+            @try {
+                event = [self eventFromBooking:book eventStore:eventStore];
                 event.calendar = eventStore.defaultCalendarForNewEvents;
-                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                        [SIMPLEALERT showAlertWithTitle:@"Calendar event" message:[NSString stringWithFormat:@"Title: %@\nDate: %@\nTime: %@\n", event.title, [book valueForKey:@"date"], [book valueForKey:@"time"]] defaultTitle:@"Add and view" defaultHandler:^{
-                            NSError * error = nil;
-                            [eventStore saveEvent:event span:EKSpanThisEvent commit:true error:&error];
-                            if (error == nil) {
-                                EKEventViewController *eventViewController = [[EKEventViewController alloc] init];
-                                eventViewController.event = event;
-                                eventViewController.allowsEditing = YES;
-                                eventViewController.modalInPopover = NO;
-                                eventViewController.delegate = self;
-                                UINavigationController *nav = [[UINavigationController alloc]
-                                                               initWithRootViewController:eventViewController];
-                                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                                    [self presentViewController:nav animated:YES completion:nil];
-                                }];
-                                return;
-                            }
-                        }];
-                    }];
-            } else {
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    [SIMPLEALERT showAlertWithTitle:@"Error" message:@"Some unknown error"];
+                    [SIMPLEALERT showAlertWithTitle:@"Calendar event" message:[NSString stringWithFormat:@"Title: %@\nDate: %@\nTime: %@\n", event.title, [book valueForKey:@"date"], [book valueForKey:@"time"]] defaultTitle:@"Add and view" defaultHandler:^{
+                        NSError * error = nil;
+                        [eventStore saveEvent:event span:EKSpanThisEvent commit:true error:&error];
+                        if (error == nil) {
+                            EKEventViewController *eventViewController = [[EKEventViewController alloc] init];
+                            eventViewController.event = event;
+                            eventViewController.allowsEditing = YES;
+                            eventViewController.modalInPopover = NO;
+                            eventViewController.delegate = self;
+                            UINavigationController *nav = [[UINavigationController alloc]
+                                                           initWithRootViewController:eventViewController];
+                            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                                [self presentViewController:nav animated:YES completion:nil];
+                            }];
+                            return;
+                        }
+                    }];
                 }];
+            }
+            @catch (NSException *exception) {
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    [SIMPLEALERT showAlertWithTitle:@"Error" message:exception.reason];
+                }];
+            }
+            @finally {
+                
             }
         } else {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -244,17 +216,49 @@
     }];
 }
 
-- (void) deleteAction: (UIButton *)sender {
+- (EKEvent *)eventFromBooking: (NSDictionary *)book eventStore:(EKEventStore*)eventStore {
+    EKEvent * event = [EKEvent eventWithEventStore:eventStore];
+    
+    if ([book valueForKey:@"facility"] != nil) {
+        event.title = [book valueForKey:@"facility"];
+    } else {
+        event.title = @"Exercise";
+    }
+    
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+    dateFormatter.dateFormat = @"(EEE) dd MMMM   yyyy HH:mm";
+    
+    NSArray * timeTokens = [[book valueForKey:@"time"] componentsSeparatedByString:@"-"];
+    NSString * startTime = [NSString stringWithFormat:@"%@ %@", [book valueForKey:@"date"], timeTokens[0]];
+    NSString * endTime = [NSString stringWithFormat:@"%@ %@", [book valueForKey:@"date"], timeTokens[1]];
+    
+    NSDate * startDate = [dateFormatter dateFromString:startTime];
+    NSDate * endDate = [dateFormatter dateFromString:endTime];
+    
+    if (startTime != nil && endDate != nil) {
+        event.startDate = startDate;
+        event.endDate = endDate;
+        event.location = [book valueForKey:@"venue"];
+        event.notes = [book valueForKey:@"deadline"];
+    } else {
+        [NSException raise:@"Time format invalid" format:@"Time format invalid"];
+    }
+    
+    return event;
+}
+
+- (void)deleteAction: (UIButton *)sender {
     [self deleteBooking:sender.tag sender:sender];
 }
 
-- (void) deleteBooking: (NSUInteger)index sender: (UIView *)sender {
+- (void)deleteBooking: (NSUInteger)index sender: (UIView *)sender {
     NSDictionary * book = self.books[index];
     if ([book valueForKey:@"id"] == nil) {
         [SIMPLEALERT showAlertWithTitle:@"Notice" message:@"You can only cancel this booking in the counter."];
         return;
     }
-    [[[SimpleAlertViewController alloc] initWithViewController:self] showActionSheetWithTitle:[NSString stringWithFormat:@"Cancelling %@", [book objectForKey:@"facility"]] message:@"Are you sure you want to cancel this booking? You cannot undo it, and this booking will be released." destructiveTitle:@"I am sure" destructiveHandler:^{
+    [[[SimpleAlertViewController alloc] initWithViewController:self] showActionSheetWithTitle:[NSString stringWithFormat:@"Cancelling %@", [book objectForKey:@"facility"]] message:DELETE_WARNING_MESSAGE destructiveTitle:@"I am sure" destructiveHandler:^{
         NSDictionary * book = self.books[index];
         Connector * connector = [[Connector alloc] initWithSessionId:[User getSessionId]];
         [self showProgressWithTitle:@"Requesting confirmation..."];
@@ -280,7 +284,7 @@
     } source: sender];
 }
 
-- (void) refresh {
+- (void)refresh {
     [self showProgressWithTitle:@"Requesting bookings..."];
     Connector * connector = [[Connector alloc] initWithSessionId:[User getSessionId]];
     [connector requestMyBookings:[User getEID] sid:[User getSID] success:^(AFHTTPRequestOperation * operation, NSArray * books) {
@@ -298,20 +302,8 @@
     }];
 }
 
-- (IBAction)editAction:(id)sender {
-    if ([self.tableView isEditing]) {
-        [self.tableView setEditing:false animated:true];
-        self.editButton.title = @"Edit";
-    } else {
-        [self.tableView setEditing:true animated:true];
-        self.editButton.title = @"Done";
-    }
-}
-
 - (void)eventViewController:(EKEventViewController *)controller didCompleteWithAction:(EKEventViewAction)action {
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 @end

@@ -45,7 +45,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) tryLogin {
+- (void)tryLogin {
     [self showProgressWithTitle:@"Requesting session..."];
         
     Connector * connector = [[Connector alloc] init];
@@ -85,19 +85,19 @@
     }
 }
 
-- (NSString *) eid {
+- (NSString *)eid {
     return self.eidTextField.text;
 }
 
-- (NSString *) password {
+- (NSString *)password {
     return self.passwordTextField.text;
 }
 
-- (BOOL) validateTextField {
+- (BOOL)validateTextField {
     return !([[self eid]  isEqual: @""] || [[self password]  isEqual: @""]);
 }
 
-- (void) hideKeyboard {
+- (void)hideKeyboard {
     [self.eidTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
 }

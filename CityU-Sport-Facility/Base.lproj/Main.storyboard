@@ -415,7 +415,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Availibility" id="o0G-5K-9th"/>
                     <connections>
-                        <outlet property="tableView" destination="jMB-Xc-Qyn" id="M9F-fg-zhZ"/>
+                        <outlet property="tableView" destination="jMB-Xc-Qyn" id="QcD-KS-sYs"/>
                         <segue destination="cAZ-iR-xad" kind="unwind" identifier="unwind" unwindAction="unwindToContainerVC:" id="NpB-OD-dRz"/>
                     </connections>
                 </viewController>

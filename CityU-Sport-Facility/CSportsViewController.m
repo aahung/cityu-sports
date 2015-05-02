@@ -17,49 +17,77 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (self.tableView != nil) {
+        [self initTableViewBackground];
+        [self removeExtraTableRows];
+        [self initRefreshControl];
+    }
 }
 
-- (void) setTableViewBackground:(UITableView *)tableView {
+- (void)initRefreshControl {
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+}
+
+- (void)initTableViewBackground {
     // set the background
     UIImageView * bgImageView = [[UIImageView alloc] init];
     [bgImageView setImage:[UIImage imageNamed:@"bg"]];
-    tableView.backgroundView = bgImageView;
-    tableView.backgroundView.alpha = 0.15;
-    tableView.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
+    self.tableView.backgroundView = bgImageView;
+    self.tableView.backgroundView.alpha = 0.15;
+    self.tableView.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)removeExtraTableRows {
+    // remove extra rows
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
-- (void) showProgressWithTitle: (NSString *)title {
-    if (_hud == nil) {
-        _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        _hud.removeFromSuperViewOnHide = true;
+- (void)viewWillAppear:(BOOL)animated {
+    if (self.tableView != nil) {
+        NSIndexPath * selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        if (selectedIndexPath != nil) {
+            [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:true];
+        }
     }
-    _hud.mode = MBProgressHUDModeIndeterminate;
-    _hud.labelText = title;
 }
 
-- (void) showSuccessProgressWithTitle:(NSString *)title {
-    if (_hud == nil || _hud.alpha < 1.0) {
-        _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        _hud.removeFromSuperViewOnHide = true;
+- (void)showProgressWithTitle: (NSString *)title {
+    if (self.hud == nil) {
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.removeFromSuperViewOnHide = true;
     }
-    _hud.mode = MBProgressHUDModeCustomView;
-    _hud.customView = [[UIImageView alloc]
+    self.hud.mode = MBProgressHUDModeIndeterminate;
+    self.hud.labelText = title;
+}
+
+- (void)showSuccessProgressWithTitle:(NSString *)title {
+    if (self.hud == nil) {
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.removeFromSuperViewOnHide = true;
+    }
+    self.hud.mode = MBProgressHUDModeCustomView;
+    self.hud.customView = [[UIImageView alloc]
                        initWithImage:[UIImage imageNamed:@"checkmark-white"]];
-    _hud.labelText = title;
+    self.hud.labelText = title;
 }
 
-- (void) finishProgress {
-    [_hud hide:YES];
-    _hud = nil;
+- (void)finishProgress {
+    [self.hud hide:YES];
+    self.hud = nil;
 }
 
-- (void) cancelProgress {
+- (void)cancelProgress {
     [self finishProgress];
+}
+
+- (void)refresh {
+    
+}
+
+- (IBAction)unwindToContainerVC:(UIStoryboardSegue *)segue {
+    NSLog(@"unwind");
 }
 
 @end

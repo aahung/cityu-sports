@@ -11,8 +11,6 @@
 
 @interface SelectDateViewController : CSportsViewController<UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property UIRefreshControl * refreshControl;
-@property NSArray * dates;
+@property NSArray *dates;
 
 @end

@@ -11,13 +11,11 @@
 
 @interface SelectCourtViewController : CSportsViewController<UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property UIRefreshControl * refreshControl;
-@property NSString * date;
-@property NSString * facility;
-@property NSArray * times;
-@property NSDictionary * courts;
-@property NSMutableDictionary * bookParameters;
-@property NSString * bookReferer;
+@property NSString *date;
+@property NSString *facility;
+@property NSArray *times;
+@property NSDictionary *courts;
+@property NSMutableDictionary *bookParameters;
+@property NSString *bookReferer;
 
 @end

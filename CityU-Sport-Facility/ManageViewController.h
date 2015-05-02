@@ -13,12 +13,8 @@
 
 @interface ManageViewController : CSportsViewController<UITableViewDataSource, UITableViewDelegate, EKEventViewDelegate>
 
-@property NSArray * books;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property UIRefreshControl *refreshControl;
-- (IBAction)editAction:(id)sender;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+@property NSArray *books;
 
-@property UILabel * emptyLabel;
+@property UILabel *emptyLabel;
 
 @end

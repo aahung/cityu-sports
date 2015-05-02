@@ -21,31 +21,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTableViewBackground:self.tableView];
     
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refreshControl];
     
     self.courts = @{};
     self.times = @[];
     
     [self refresh];
-    
-    // remove extra rows
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    NSIndexPath * selectedIndexPath = [self.tableView indexPathForSelectedRow];
-    if (selectedIndexPath != nil) {
-        [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:true];
-    }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -157,10 +138,6 @@
             [self showProgressWithTitle:@"Requesting court list (~5s)..."];
         }];
     }];
-}
-
-- (IBAction)unwindToContainerVC:(UIStoryboardSegue *)segue {
-    NSLog(@"unwind");
 }
 
 @end

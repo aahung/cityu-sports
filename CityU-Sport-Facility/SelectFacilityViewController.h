@@ -11,9 +11,7 @@
 
 @interface SelectFacilityViewController : CSportsViewController<UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property UIRefreshControl * refreshControl;
-@property NSString * date;
-@property NSArray * facilities;
+@property NSString *date;
+@property NSArray *facilities;
 
 @end
