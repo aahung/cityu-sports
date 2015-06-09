@@ -12,13 +12,19 @@
 #define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define IOS7 SYSTEM_VERSION_LESS_THAN(@"8.0")
 
-@implementation SimpleAlertViewController
+@interface SimpleAlertViewController()
 
+    // reference of the target view controller
+    @property (weak) UIViewController *_viewController;
+
+@end
+
+@implementation SimpleAlertViewController
 
 - (instancetype)initWithViewController:(UIViewController *)viewController {
     self = [super init];
     if (self) {
-        self.viewController = viewController;
+        self._viewController = viewController;
     }
     return self;
 }
@@ -44,7 +50,7 @@
     
     [alertController addAction:defaultAction];
     
-    [self.viewController presentViewController:alertController animated:true completion:nil];
+    [self._viewController presentViewController:alertController animated:true completion:nil];
 }
 
 - (void)showActionSheetWithTitle: (NSString *)title message: (NSString *)message destructiveTitle: (NSString *)desTitle destructiveHandler: (void(^)())handler source: (UIView *)source{
@@ -73,7 +79,7 @@
         popover.permittedArrowDirections = UIPopoverArrowDirectionAny;
     }
     
-    [self.viewController presentViewController:alertController animated:true completion:nil];
+    [self._viewController presentViewController:alertController animated:true completion:nil];
 }
 
 - (void) showAlertWithTitle:(NSString *)title message:(NSString *)message defaultTitle: (NSString *) defaultTitle defaultHandler: (void(^)()) defaultHandler {
@@ -103,7 +109,7 @@
     [alertController addAction:cancelAction];
     [alertController addAction:defaultAction];
     
-    [self.viewController presentViewController:alertController animated:true completion:nil];
+    [self._viewController presentViewController:alertController animated:true completion:nil];
 }
 
 

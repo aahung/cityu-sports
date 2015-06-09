@@ -14,7 +14,6 @@
 @interface SimpleAlertViewController : NSObject
 
 - (instancetype)initWithViewController: (UIViewController *) viewController;
-@property UIViewController * viewController;
 
 - (void)showActionSheetWithTitle: (NSString *)title message: (NSString *)massage destructiveTitle: (NSString *)desTitle destructiveHandler: (void(^)())handler source: (UIView *)source;
 
