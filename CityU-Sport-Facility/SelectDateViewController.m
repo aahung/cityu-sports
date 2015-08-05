@@ -88,13 +88,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier  isEqual: @"facility"]) {
-        UINavigationController * navigationController = (UINavigationController *)[segue destinationViewController];
-        SelectFacilityViewController * viewController;
-        if ([navigationController isKindOfClass:[SelectFacilityViewController class]]) {
-            viewController = (SelectFacilityViewController *)navigationController;
-        } else {
-            viewController = (SelectFacilityViewController *)[navigationController topViewController];
-        }
+        SelectFacilityViewController * viewController = (SelectFacilityViewController *)[segue destinationViewController];
         if (viewController != nil) {
             NSIndexPath * selectedIndexPath = [self.tableView indexPathForSelectedRow];
             viewController.date = [self.dates objectAtIndex:selectedIndexPath.item];

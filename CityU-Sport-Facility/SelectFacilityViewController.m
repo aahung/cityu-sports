@@ -69,13 +69,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier  isEqual: @"time"]) {
-        UINavigationController * navigationController = (UINavigationController *)[segue destinationViewController];
-        SelectCourtViewController * viewController;
-        if ([navigationController isKindOfClass:[SelectCourtViewController class]]) {
-            viewController = (SelectCourtViewController *)navigationController;
-        } else {
-            viewController = (SelectCourtViewController *)[navigationController topViewController];
-        }
+        SelectCourtViewController * viewController = (SelectCourtViewController *)[segue destinationViewController];
         if (viewController != nil) {
             NSIndexPath * selectedIndexPath = [self.tableView indexPathForSelectedRow];
             viewController.date = self.date;

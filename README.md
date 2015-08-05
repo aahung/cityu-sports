@@ -18,6 +18,9 @@ license file may found in [here](CityU-Sport-Facility/licenses) or Setting -> US
 
 ## Change log
 
+### 1.1.2 (30):
+Fixed a bug in iOS 9 which will cause back button disappear
+
 ### 1.1.1 (29):
 Optimize UI
 Fixed the bug may not detect the result of deleting booking correctly
