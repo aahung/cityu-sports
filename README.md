@@ -18,6 +18,10 @@ license file may found in [here](CityU-Sport-Facility/licenses) or Setting -> US
 
 ## Change log
 
+### 1.1.4 (34)
+- Tap on tab bar trigger refreshing
+- Update dependencies
+
 ### 1.1.3 (33)
 - Minor UI changes
 - Tested with Xcode 7
