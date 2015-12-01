@@ -93,6 +93,15 @@
     
 }
 
+- (void)mockPullDown {
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        [self.tableView setContentOffset:CGPointMake(0.0, -120.0)];
+    } completion:^(BOOL finished) {
+        [self.refreshControl beginRefreshing];
+        [self refresh];
+    }];
+}
+
 - (IBAction)unwindToContainerVC:(UIStoryboardSegue *)segue {
     NSLog(@"unwind");
 }

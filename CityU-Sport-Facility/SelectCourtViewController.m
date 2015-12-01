@@ -26,7 +26,7 @@
     self.courts = @{};
     self.times = @[];
     
-    [self refresh];
+    [self mockPullDown];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

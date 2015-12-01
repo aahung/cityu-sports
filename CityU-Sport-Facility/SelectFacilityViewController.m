@@ -24,7 +24,7 @@
     
     self.facilities = @[];
     
-    [self refresh];
+    [self mockPullDown];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

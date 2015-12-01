@@ -20,5 +20,6 @@
 - (void)showSuccessProgressWithTitle:(NSString *)title;
 - (void)finishProgress;
 - (void)cancelProgress;
+- (void)mockPullDown;
 
 @end
