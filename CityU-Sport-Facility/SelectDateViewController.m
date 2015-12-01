@@ -97,4 +97,11 @@
     }
 }
 
+// on bar tab item clicked, refrash
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    if (viewController == self.navigationController) {
+        [self refresh];
+    }
+}
+
 @end

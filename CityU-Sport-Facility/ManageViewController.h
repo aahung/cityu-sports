@@ -11,7 +11,7 @@
 #import <EventKitUI/EventKitUI.h>
 #import "CSportsViewController.h"
 
-@interface ManageViewController : CSportsViewController<UITableViewDataSource, UITableViewDelegate, EKEventViewDelegate>
+@interface ManageViewController : CSportsViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property NSArray *books;
 

@@ -24,6 +24,13 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    // set tab controller delegate
+    self.tabBarController.delegate = self;
+}
+
 - (void)initRefreshControl {
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];

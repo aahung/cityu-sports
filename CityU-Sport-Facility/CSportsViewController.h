@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MBProgressHUD.h>
 
-@interface CSportsViewController : UIViewController
+@interface CSportsViewController : UIViewController<UITabBarControllerDelegate>
 
 @property MBProgressHUD *hud;
 
