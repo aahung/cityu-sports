@@ -1,8 +1,26 @@
 # CityU Sport Facility [![Build Status](https://travis-ci.org/Aahung/cityu-sports.svg?branch=master)](https://travis-ci.org/Aahung/cityu-sports)
 unofficial cityu sport facility booking app for iOS, [Android version here](https://github.com/Aahung/cityu-sports-android).
 
+## Important Announcement
+
+**On 07 Dec, 2015**. as a concern  sent from City University of Hong Kong:
+
+> VPSA, Dean of Students and Director of SDS are concerning the security of
+this kind of app because it's possible that the apps may store the username
+and password and perform any action on behalf of any user in any of CityU’s
+Enterprise Systems.
+
+My intention on this App is only to provide a better booking experience for CityU students and staffs. I have not done or tried to store any usernames or passwords or users. This project is competely open source and directly built then published without adding any lines of codes. 
+
+However, to avoid any unhappiness likely to happen to me, I will no longer make **CityU Sport Facility** App available on App Store. I will also publish an update to disable the functions to App Store in the comming weeks. 
+I am sorry for any inconvenience for current users. This project will be only for technical discussion from now on. 
+
+**R.I.P.**
+
+[See full announcement](https://blog.xinhong.me/two-cityu-apps-took-down-from-app-store-liang-kuan-cityu-ying-yong-xia-jia-tong-zhi.html)
+
 ## Install
-[Link](https://xinhong.me/cityu-sport-facility/)
+[<s>Link</s>]()
 
 ## Screenshots
 [Screenshots](https://github.com/Aahung/cityu-sports/tree/master/screenshots)
