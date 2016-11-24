@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		68C65489E223B457A5FB4563 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 955113E2201863681D47E65E /* libPods.a */; };
-		7586F8B14D35DA466C58EA83 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 955113E2201863681D47E65E /* libPods.a */; };
+		96EB4DD7FF538A985D9C1B4A /* libPods-CityU-Sport-Facility.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF32CA11F91F5904770E1E5 /* libPods-CityU-Sport-Facility.a */; };
 		B21078841A8A6E2500A8347C /* getFacilityAfter2400.m in Sources */ = {isa = PBXBuildFile; fileRef = B21078831A8A6E2500A8347C /* getFacilityAfter2400.m */; };
 		B21078861A8A705700A8347C /* getDateAfter2400.m in Sources */ = {isa = PBXBuildFile; fileRef = B21078851A8A705700A8347C /* getDateAfter2400.m */; };
 		B21078881A8A739500A8347C /* getAvailabilityAfter2400.m in Sources */ = {isa = PBXBuildFile; fileRef = B21078871A8A739500A8347C /* getAvailabilityAfter2400.m */; };
@@ -35,6 +34,7 @@
 		B2C774B71A85FE330074FC92 /* SelectFacilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C774B61A85FE330074FC92 /* SelectFacilityViewController.m */; };
 		B2C774BA1A85FEE00074FC92 /* SettingsTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C774B91A85FEE00074FC92 /* SettingsTableTableViewController.m */; };
 		B2C774BD1A86015A0074FC92 /* SelectCourtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C774BC1A86015A0074FC92 /* SelectCourtViewController.m */; };
+		EE44B709886EE781124DE4A2 /* libPods-CityU-Sport-FacilityTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D84E1296906B4B6DF0182B7 /* libPods-CityU-Sport-FacilityTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,9 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		146809BC05504DD327CE8B55 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		80DA8383ED0BC9DC4336C261 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		955113E2201863681D47E65E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		026991CB6E2670AECCBAE62D /* Pods-CityU-Sport-FacilityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityU-Sport-FacilityTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CityU-Sport-FacilityTests/Pods-CityU-Sport-FacilityTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1D84E1296906B4B6DF0182B7 /* libPods-CityU-Sport-FacilityTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CityU-Sport-FacilityTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CF32CA11F91F5904770E1E5 /* libPods-CityU-Sport-Facility.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CityU-Sport-Facility.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21078831A8A6E2500A8347C /* getFacilityAfter2400.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getFacilityAfter2400.m; sourceTree = "<group>"; };
 		B21078851A8A705700A8347C /* getDateAfter2400.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getDateAfter2400.m; sourceTree = "<group>"; };
 		B21078871A8A739500A8347C /* getAvailabilityAfter2400.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getAvailabilityAfter2400.m; sourceTree = "<group>"; };
@@ -96,6 +96,9 @@
 		B2C774B91A85FEE00074FC92 /* SettingsTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableTableViewController.m; sourceTree = "<group>"; };
 		B2C774BB1A86015A0074FC92 /* SelectCourtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCourtViewController.h; sourceTree = "<group>"; };
 		B2C774BC1A86015A0074FC92 /* SelectCourtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCourtViewController.m; sourceTree = "<group>"; };
+		B329D03725B2A332EE393E43 /* Pods-CityU-Sport-FacilityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityU-Sport-FacilityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityU-Sport-FacilityTests/Pods-CityU-Sport-FacilityTests.release.xcconfig"; sourceTree = "<group>"; };
+		DD91FB5E878A8A82C91C0604 /* Pods-CityU-Sport-Facility.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityU-Sport-Facility.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CityU-Sport-Facility/Pods-CityU-Sport-Facility.debug.xcconfig"; sourceTree = "<group>"; };
+		EB3AC3BCFD411E999118F82E /* Pods-CityU-Sport-Facility.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityU-Sport-Facility.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityU-Sport-Facility/Pods-CityU-Sport-Facility.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7586F8B14D35DA466C58EA83 /* libPods.a in Frameworks */,
+				96EB4DD7FF538A985D9C1B4A /* libPods-CityU-Sport-Facility.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,18 +114,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68C65489E223B457A5FB4563 /* libPods.a in Frameworks */,
+				EE44B709886EE781124DE4A2 /* libPods-CityU-Sport-FacilityTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6D1F719FC1A570BAC297A419 /* Pods */ = {
+		81039E0B57CF37285CCADAFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				146809BC05504DD327CE8B55 /* Pods.debug.xcconfig */,
-				80DA8383ED0BC9DC4336C261 /* Pods.release.xcconfig */,
+				9CF32CA11F91F5904770E1E5 /* libPods-CityU-Sport-Facility.a */,
+				1D84E1296906B4B6DF0182B7 /* libPods-CityU-Sport-FacilityTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		97BAB2997454E87FEEA1A52E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD91FB5E878A8A82C91C0604 /* Pods-CityU-Sport-Facility.debug.xcconfig */,
+				EB3AC3BCFD411E999118F82E /* Pods-CityU-Sport-Facility.release.xcconfig */,
+				026991CB6E2670AECCBAE62D /* Pods-CityU-Sport-FacilityTests.debug.xcconfig */,
+				B329D03725B2A332EE393E43 /* Pods-CityU-Sport-FacilityTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -133,8 +147,8 @@
 				B26F31EF1A85BA790026234F /* CityU-Sport-Facility */,
 				B26F32091A85BA790026234F /* CityU-Sport-FacilityTests */,
 				B26F31EE1A85BA790026234F /* Products */,
-				6D1F719FC1A570BAC297A419 /* Pods */,
-				EFA16E73D8E0C1E08D0F6A91 /* Frameworks */,
+				97BAB2997454E87FEEA1A52E /* Pods */,
+				81039E0B57CF37285CCADAFE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -228,14 +242,6 @@
 			name = Class;
 			sourceTree = "<group>";
 		};
-		EFA16E73D8E0C1E08D0F6A91 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				955113E2201863681D47E65E /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -243,11 +249,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B26F32101A85BA790026234F /* Build configuration list for PBXNativeTarget "CityU-Sport-Facility" */;
 			buildPhases = (
-				781F71C93BD3A8E1C100509E /* Check Pods Manifest.lock */,
+				643525A41401E0BF77AA3598 /* [CP] Check Pods Manifest.lock */,
 				B26F31E91A85BA790026234F /* Sources */,
 				B26F31EA1A85BA790026234F /* Frameworks */,
 				B26F31EB1A85BA790026234F /* Resources */,
-				836D5D147D40E8CCEE40A27D /* Copy Pods Resources */,
+				DA1C2DE69DF3ED3777259F05 /* [CP] Embed Pods Frameworks */,
+				8C1AEDC069D0492728E1B650 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -262,11 +269,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B26F32131A85BA790026234F /* Build configuration list for PBXNativeTarget "CityU-Sport-FacilityTests" */;
 			buildPhases = (
-				935616576AC4F8D92036167F /* Check Pods Manifest.lock */,
+				9D3EE2986C893CD1ECD8770B /* [CP] Check Pods Manifest.lock */,
 				B26F32021A85BA790026234F /* Sources */,
 				B26F32031A85BA790026234F /* Frameworks */,
 				B26F32041A85BA790026234F /* Resources */,
-				A6C68BAB4FC9DEF131CDDC77 /* Copy Pods Resources */,
+				1C1D6E6F92E55C95C4CE0F80 /* [CP] Embed Pods Frameworks */,
+				F752DAED235ED33FB59D5186 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -289,6 +297,7 @@
 				TargetAttributes = {
 					B26F31EC1A85BA790026234F = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 29CD49UNXW;
 					};
 					B26F32051A85BA790026234F = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -338,64 +347,94 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		781F71C93BD3A8E1C100509E /* Check Pods Manifest.lock */ = {
+		1C1D6E6F92E55C95C4CE0F80 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CityU-Sport-FacilityTests/Pods-CityU-Sport-FacilityTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		836D5D147D40E8CCEE40A27D /* Copy Pods Resources */ = {
+		643525A41401E0BF77AA3598 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		935616576AC4F8D92036167F /* Check Pods Manifest.lock */ = {
+		8C1AEDC069D0492728E1B650 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CityU-Sport-Facility/Pods-CityU-Sport-Facility-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A6C68BAB4FC9DEF131CDDC77 /* Copy Pods Resources */ = {
+		9D3EE2986C893CD1ECD8770B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DA1C2DE69DF3ED3777259F05 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CityU-Sport-Facility/Pods-CityU-Sport-Facility-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F752DAED235ED33FB59D5186 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CityU-Sport-FacilityTests/Pods-CityU-Sport-FacilityTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -546,35 +585,41 @@
 		};
 		B26F32111A85BA790026234F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 146809BC05504DD327CE8B55 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = DD91FB5E878A8A82C91C0604 /* Pods-CityU-Sport-Facility.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "CityU-Sport-Facility/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.xinhong.pcool.CityUsportfacility;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		B26F32121A85BA790026234F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 80DA8383ED0BC9DC4336C261 /* Pods.release.xcconfig */;
+			baseConfigurationReference = EB3AC3BCFD411E999118F82E /* Pods-CityU-Sport-Facility.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "CityU-Sport-Facility/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.xinhong.pcool.CityUsportfacility;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
 		B26F32141A85BA790026234F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 146809BC05504DD327CE8B55 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 026991CB6E2670AECCBAE62D /* Pods-CityU-Sport-FacilityTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -594,7 +639,7 @@
 		};
 		B26F32151A85BA790026234F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 80DA8383ED0BC9DC4336C261 /* Pods.release.xcconfig */;
+			baseConfigurationReference = B329D03725B2A332EE393E43 /* Pods-CityU-Sport-FacilityTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
